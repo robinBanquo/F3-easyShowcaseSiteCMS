@@ -3,13 +3,13 @@
 //! Base controller
 class Controller {
 
-	protected
-		$db;
+	protected $db;
+	protected $f3;
+	public $siteName = "framasite";
 
 	//! HTTP route pre-processor
 	function beforeroute($f3) {
 		$db=$this->db;
-		// Prepare user menu
 	}
 
 	//! HTTP route post-processor
@@ -19,9 +19,12 @@ class Controller {
 
 	//! Instantiate class
 	function __construct() {
-		$f3=Base::instance();
+		$this->f3 = Base::instance();
+		$this->f3->config('sites/'.$this->siteName.'/config.ini');
 		// Connect to the database
-		$this->db = new \DB\Jig ( 'user/user1' , $format = \DB\Jig::FORMAT_JSON );
+
+		$this->db = new \DB\Jig ( $_SERVER["DOCUMENT_ROOT"].'/sites/'.$this->siteName , $format = \DB\Jig::FORMAT_JSON );
 	}
+
 
 }
