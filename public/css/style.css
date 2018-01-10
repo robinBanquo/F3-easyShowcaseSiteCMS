@@ -55,3 +55,46 @@ p {
 footer.page-footer {
   margin: 0;
 }
+
+/*******************************
+		COLORS
+ */
+.frama-purple{
+	background-color: #635182;
+}
+.frama-purple-text{
+	color:#635182
+}
+
+.frama-orange{
+	background-color: #C48A1B;
+}
+.frama-orange-text{
+	color:#C48A1B
+}
+
+.hover-frama-purple:hover {
+	background-color: #635182;
+}
+
+.hover-frama-orange:hover {
+	background-color: #C48A1B;
+}
+
+/****************************
+TOOLS
+ */
+.no-margin{
+	margin: 0 !important;
+}
+.small-margin{
+	margin: 5px !important;
+}
+
+.small-padding{
+	padding: 10px !important;
+}
+.no-padding {
+	padding: 0 !important;
+}
+

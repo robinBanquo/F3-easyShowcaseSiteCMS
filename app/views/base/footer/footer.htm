@@ -19,29 +19,12 @@
 			<div class="col l3 s12">
 
 				<ul>
-					<li><a class=" modal-trigger" href="#login-modal" href="#!">Administration du site</a></li>
+					<li class="center-align"><a class=" modal-trigger white-text" href="#login-modal" href="#!">Administration du site</a></li>
 					<div id="login-modal" class="modal modal-fixed-footer">
 						<div class="modal-content ">
 							<h4 class="grey-text">Connexion Administrateur</h4>
 							<div class="valign-wrapper">
-								<form class="col s12" method="POST" action="/authenticate">
-									<div class="row">
-										<div class="input-field col s12 m6">
-											<input id="username" name="username" type="text" required class="validate grey-text">
-											<label for="username">Nom d'utilisateur</label>
-										</div>
-										<div class="input-field col s12 m6">
-											<input id="password" name="password" type="password" required class="validate grey-text">
-											<label for="password">Mot de passe</label>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col s12 center-align">
-											<button type="submit" class="waves-effect waves-light btn">connexion</button>
-										</div>
-
-									</div>
-								</form>
+								<include href="./base/includes/loginForm.htm" />
 							</div>
 
 						</div>

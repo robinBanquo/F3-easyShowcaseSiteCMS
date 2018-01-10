@@ -8,11 +8,20 @@
 
 <include href="./base/nav/nav.htm" />
 
-<include  href="./modules/paralax/module.htm" />
-<include href="./modules/threeGoals/module.htm" />
-<include  href="./modules/paralax/module.htm" />
-<include href="./modules/textSection/module.htm"/>
-<include  href="./modules/paralax/module.htm" />
+
+<div class="row" style="min-height: 100vh; padding-top: 50px;">
+	<check if="{{ @SESSION.loginPageMessage }}">
+		<div class="row">
+			<p class="frama-orange-text center-align">
+				{{@SESSION.loginPageMessage}}
+			</p>
+		</div>
+	</check>
+	<div class="col s12 m6 offset-m3">
+		<include  href="./base/includes/loginForm.htm" />
+	</div>
+</div>
+
 
 <include href="./base/footer/footer.htm" />
 

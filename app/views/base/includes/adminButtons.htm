@@ -1,0 +1,34 @@
+<div class="fixed-action-btn horizontal fab-menu-btn click-to-toggle"
+	 style="top: 10px; right: 10px">
+	<a class="btn-floating btn-large frama-purple hover-frama-orange waves-effect waves-light tooltipped" data-position="bottom"
+	   data-delay="350" data-tooltip="connecté en tant que {{@user_id}}" >
+		<span class="grey-text text-lighten-4" style="font-size: 1.8em">{{@user_id[0]}}</span>
+	</a>
+	<ul class="right-align">
+		<li class="inline-block small-margin">
+			<a href="/logout" class="btn-floating frama-orange hover-frama-purple tooltipped waves-effect waves-light" data-position="bottom"
+			   data-delay="350" data-tooltip="Déconnexion" >
+				<i class="material-icons  grey-text text-lighten-4">exit_to_app</i>
+			</a>
+		</li>
+		<check if="{{ @isAdminPage }}">
+			<true>
+				<li class="inline-block small-margin">
+					<a href="/" class="btn-floating frama-orange hover-frama-purple tooltipped waves-effect waves-light" data-position="bottom"
+					   data-delay="350" data-tooltip="Prévisualisation" >
+						<i class="material-icons  grey-text text-lighten-4">remove_red_eye</i>
+					</a>
+				</li>
+			</true>
+			<false>
+				<li class="inline-block small-margin">
+					<a href="/admin" class="btn-floating frama-orange hover-frama-purple tooltipped waves-effect waves-light" data-position="bottom"
+					   data-delay="350" data-tooltip="Retour à la page d'édition" >
+						<i class="material-icons  grey-text text-lighten-4">edit</i>
+					</a>
+				</li>
+			</false>
+		</check>
+
+	</ul>
+</div>
