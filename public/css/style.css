@@ -8,69 +8,74 @@
 
 nav ul a,
 nav .brand-logo {
-  color: #444;
+	color: #444;
 }
 
 p {
-  line-height: 2rem;
+	line-height: 2rem;
 }
 
 .button-collapse {
-  color: #26a69a;
+	color: #26a69a;
 }
 
 .parallax-container {
-  min-height: 380px;
-  line-height: 0;
-  height: auto;
-  color: rgba(255,255,255,.9);
-}
-  .parallax-container .section {
-    width: 100%;
-  }
-
-@media only screen and (max-width : 992px) {
-  .parallax-container .section {
-    position: absolute;
-    top: 40%;
-  }
-  #index-banner .section {
-    top: 10%;
-  }
+	min-height: 380px;
+	line-height: 0;
+	height: auto;
+	color: rgba(255, 255, 255, .9);
 }
 
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
+.parallax-container .section {
+	width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+	.parallax-container .section {
+		position: absolute;
+		top: 40%;
+	}
+
+	#index-banner .section {
+		top: 10%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	#index-banner .section {
+		top: 0;
+	}
 }
 
 .icon-block {
-  padding: 0 15px;
+	padding: 0 15px;
 }
+
 .icon-block .material-icons {
-  font-size: inherit;
+	font-size: inherit;
 }
 
 footer.page-footer {
-  margin: 0;
+	margin: 0;
 }
 
 /*******************************
 		COLORS
  */
-.frama-purple{
+.frama-purple {
 	background-color: #635182;
 }
-.frama-purple-text{
-	color:#635182
+
+.frama-purple-text {
+	color: #635182 !important;
 }
 
-.frama-orange{
+.frama-orange {
 	background-color: #C48A1B;
 }
-.frama-orange-text{
-	color:#C48A1B
+
+.frama-orange-text {
+	color: #C48A1B !important;
 }
 
 .hover-frama-purple:hover {
@@ -84,37 +89,60 @@ footer.page-footer {
 /****************************
 TOOLS
  */
-.no-margin{
+.no-margin {
 	margin: 0 !important;
 }
-.small-margin{
+
+.small-margin {
 	margin: 5px !important;
 }
 
-.small-padding{
+.small-padding {
 	padding: 10px !important;
 }
+
 .no-padding {
 	padding: 0 !important;
 }
-.inline-block{
+
+.inline-block {
 	display: inline-block !important;
 }
-.static{
+
+.static {
 	position: static !important;
 }
-.relative{
+
+.relative {
 	position: relative !important;
 }
-.absolute{
-	position : absolute !important;
+
+.absolute {
+	position: absolute !important;
 }
-.hidden{
+
+.hidden {
 	visibility: hidden !important;
 }
-.displaynone{
+
+.displaynone {
 	display: none;
 }
-.fixed{
+
+.light-opacity {
+	opacity: 0.9 !important;
+}
+
+.opacity1 {
+	opacity: 1 !important;
+}
+
+.btn-floating {
+	webkit-box-shadow: 4px 4px 7px -2px rgba(0, 0, 0, 0.75) !important;
+	-moz-box-shadow: 4px 4px 7px -2px rgba(0, 0, 0, 0.75) !important;
+	box-shadow: 4px 4px 7px -2px rgba(0, 0, 0, 0.75) !important;
+}
+
+.fixed {
 	position: fixed !important;
 }

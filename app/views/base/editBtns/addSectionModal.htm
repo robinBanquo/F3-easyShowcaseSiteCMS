@@ -1,14 +1,14 @@
-<div id="addSectionModal" class="modal modal-fixed-footer">
-	<div class="modal-content ">
+<div id="addSectionModal" class="modal modal-fixed-footer " style="width: 85% !important; height: 85% !important;background-color: rgba(255,255,255,0.90) !important;">
+	<div class="modal-content " >
 		<h4 class="grey-text">Ajouter une section</h4>
 		<div class="row">
 			<repeat group="{{ @modulesList }}" value="{{ @module }}">
 				<div class="col s12 m6">
-					<div class="card">
+					<div class="card " style="background-color: rgb(255,255,255) !important;">
 						<div class="card-image">
-							<img src="images/sample-1.jpg">
-							<span class="card-title">{{@module[title]}}</span>
-							<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+							<img src="{{@BASE.'/app/views/modules/'.@module[name].'/preview.png/'}}">
+							<span class="card-title orange-text text-lighten-2">{{@module[title]}}</span>
+							<a class="btn-floating halfway-fab waves-effect waves-light frama-orange hover-frama-purple chooseModuleBtn" id="chooseModuleBtn-{{@module[name]}}"><i class="material-icons" >add</i></a>
 						</div>
 						<div class="card-content">
 							<p>{{@module[description]}}</p>
@@ -23,3 +23,4 @@
 		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons">clears</i></a>
 	</div>
 </div>
+<include  href="./base/editBtns/addSectionForm.htm" />

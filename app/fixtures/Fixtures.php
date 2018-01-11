@@ -18,7 +18,7 @@ class Fixtures {
 			],
 			[
 				'id'=>uniqid(),
-				'module'=>'threeGoals',
+				'module'=>'three_goals',
 			],
 			[
 				'id'=>uniqid(),

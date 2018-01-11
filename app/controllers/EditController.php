@@ -22,6 +22,29 @@ class EditController extends Controller {
 
 	//méthode d'insertion d'une section dans la page
 	function addSection() {
+		$reference=$this->f3->get('POST.reference');
+		$positionReference=$this->f3->get('POST.positionReference');
+		$module=$this->f3->get('POST.module');
 
+		$siteStructure = $this->getSiteStructure();
+		$newSiteStructure = array();
+		foreach ($siteStructure as $i=>$section){
+			if($section['id']===$reference){
+				$newSection = array('id' => uniqid(),'module'=>$module );
+				if($positionReference=== "after"){
+					array_push($newSiteStructure,$section);
+					array_push($newSiteStructure,$newSection);
+				}else{
+					array_push($newSiteStructure,$newSection);
+					array_push($newSiteStructure,$section);
+				}
+			}else{
+				array_push($newSiteStructure,$section);
+			}
+		}
+		$this->db->write('siteStructure.json',$newSiteStructure);
+
+		//et on reroute vers la page d'admin
+		$this->f3->reroute('/admin');
 	}
 }
