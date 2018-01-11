@@ -1,0 +1,27 @@
+<div class="fixed-action-btn toolbar absolute" >
+	<a class="btn-floating  frama-orange hover-frama-purple generalMenuOptionsBtn">
+		<i class="large material-icons">build</i>
+	</a>
+	<ul>
+		<li class="waves-effect waves-light tooltipped "  data-position="bottom"
+			data-delay="250" data-tooltip="Supprimer la section">
+			<a href="{{'/admin/edit/delete_section?id='. @id}}"><i class="material-icons">clear</i></a>
+		</li>
+		<li class="waves-effect waves-light tooltipped "  data-position="bottom"
+			data-delay="250" data-tooltip="Remonter la section">
+			<a href="{{'/admin/edit/move_up?id='. @id}}"><i class="material-icons">vertical_align_top</i></a>
+		</li>
+		<li class="waves-effect waves-light tooltipped "  data-position="bottom"
+			data-delay="250" data-tooltip="Descendre la section">
+			<a href="{{'/admin/edit/move_down?id='. @id}}"><i class="material-icons">vertical_align_bottom</i></a>
+		</li>
+		<li class="waves-effect waves-light tooltipped "  data-position="bottom"
+			data-delay="250" data-tooltip="Ajouter un raccourci au menu">
+			<a href="#!"><i class="material-icons">note_add</i></a>
+		</li>
+		<li class="waves-effect waves-light tooltipped "  data-position="bottom"
+			data-delay="250" data-tooltip="Options de la section">
+			<a href="#!"><i class="material-icons">settings</i></a>
+		</li>
+	</ul>
+</div>

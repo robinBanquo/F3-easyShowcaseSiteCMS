@@ -5,11 +5,14 @@
 <script src="/public/js/init.js"></script>
 <script src="/app/views/base/nav/nav.js"></script>
 <script src="/app/views/base/footer/footer.js" ></script>
-<script src="/app/views/base/editBtns/editBtns.js" ></script>
+
+
 <repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
 	<script src="{{'/app/views/modules/'.@module.'/show.js'}}"></script>
 </repeat>
 <check if="{{ @isAdminPage }}">
+	<script src="/app/views/base/editBtns/editBtns.js" ></script>
+	<script src="/app/views/base/generalModuleOptions/generalModuleOptions.js" ></script>
 	<repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
 		<script src="{{'/app/views/modules/'.@module.'/edit.js'}}"></script>
 	</repeat>

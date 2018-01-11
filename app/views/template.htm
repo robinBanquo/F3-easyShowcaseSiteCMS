@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
-<include href="./base/includes/head.htm" />
+<include href="./base/includes/head.htm"/>
 <body>
 {* ajout des boutons supérieurs si l'utilisateur est connecté en tant qu'admin*}
-<include if="{{ @isAdmin }}" href="./base/includes/adminButtons.htm" />
+<include if="{{ @isAdmin }}" href="./base/includes/adminButtons.htm"/>
 
 
-<include href="./base/nav/nav.htm" />
+<include href="./base/nav/nav.htm"/>
 
 <repeat group="{{ @siteStructure }}" key="{{ @position }}" value="{{ @section}}">
-	<include if="{{ @isAdminPage }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='before'"/>
-	<include  href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}}"/>
-	<include if="{{ @isAdminPage && @position === count(@siteStructure)-1 }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
+	<div class="relative" id="{{@section[id]}}">
+		<include if="{{ @isAdminPage }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='before'"/>
+		<include href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}}"/>
+		<include if="{{ @isAdminPage && @position === count(@siteStructure)-1 }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
+	<include if="{{ @isAdminPage }}" href="./base/generalModuleOptions/generalModuleOptions.htm" with="id={{@section[id]}}" />
+	</div>
 </repeat>
 
 
-<include href="./base/footer/footer.htm" />
+<include href="./base/footer/footer.htm"/>
 <include if="{{@isAdminPage}}" href="./base/editBtns/addSectionModal.htm"/>
 <!--  Scripts-->
-<include href="./base/includes/scripts.htm" />
+<include href="./base/includes/scripts.htm"/>
 
 </body>
 </html>

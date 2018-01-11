@@ -146,3 +146,9 @@ TOOLS
 .fixed {
 	position: fixed !important;
 }
+
+.big-modal {
+	width: 85% !important;
+	max-height: 80% !important;
+	height: 80% !important;
+}
