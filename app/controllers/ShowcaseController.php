@@ -2,57 +2,91 @@
 
 //! Front-end processor
 class ShowCaseController extends Controller {
-	//! Display content page
+	//affichage du contenu de la page pour les visiteurs
 	function showVisitor() {
+		//on commence par générer la page
 		$this->generatePage();
-
+		//puis on renvoie le template général
 		$template=new Template;
 		echo $template->render('template.htm');
 	}
 
+	//affichage de la page d'administration du site
 	function showAdmin() {
+		//on verifie que l'utilisateur est bien un admin
 		if ($this->isAdmin()) {
+			//on passe le isAdminPage a true, un petit drapeau bien pratique pour les manip du template
 			$this->f3->set('isAdminPage',TRUE);
+			//on génere la page
 			$this->generatePage();
+			//on genere les données nécessaires à l'administration du site
 			$this->generateAdminOnlyData();
+			//puis on renvoie le template de base
 			$template=new Template;
 			echo $template->render('template.htm');
-		} else {
+		} else {//si il est pas admin, on renvoie vers la page de login avec un message d'erreur
 			$this->f3->set('SESSION.loginPageMessage',
 				"vous devez vous authentifier pour accéder au options d'administration");
 			$this->f3->reroute('/login');
 		}
 	}
-
+	//methode de génération de la page
 	function generatePage() {
+		//on vient récuperer la structure du site telle qu'elle
+		// 'est initialisé dans le constructeur du controller
 		$siteStructure=$this->getSiteStructure();
+		//on la passe dans les variables globales
 		$this->f3->set('siteStructure',$siteStructure);
+		//et on lance la methode d'import des differents fichier js des modules
 		$this->importJs();
 	}
+	//methode d'import des differents fichier js des modules
+	//l'idée est de ne pas importer plusieur fois le meme fichier js
 	function importJs() {
-		$siteStructure = $this->f3->get('siteStructure');
-		$jsArray = array();
-		foreach ($siteStructure as $section){
-			if(!in_array($section['module'], $jsArray)){
-				array_push($jsArray, $section['module']);
+		//on recuper la structure su site
+		$siteStructure=$this->f3->get('siteStructure');
+		//on initialise un tableau de resultats
+		$jsArray=array();
+		//pour chacunes des section du site
+		foreach ($siteStructure as $section) {
+			//si le module n'est pas encore dans le tableau résultat
+			if (!in_array($section['module'],$jsArray)) {
+				//on l'y insere
+				array_push($jsArray,$section['module']);
 			}
 		}
-		$this->f3->set('jsSectionArray', $jsArray);
+		//puis on passe notre liste de nom de modules en variable globale
+		$this->f3->set('jsSectionArray',$jsArray);
 	}
-	function generateAdminOnlyData(){
-		$modulesList= array();
-		$modulesFolderItems = scandir ( __DIR__.'/../views/modules/');
-		$modules = array();
-		foreach ($modulesFolderItems as $item){
-			if($item[0] !== '.'){
-				array_push($modules, $item);
+
+	//methode de generation des infos complémentaires nécessaires a la page admin
+	function generateAdminOnlyData() {
+		//on ititialise un tableau de résultat
+		$modulesList=array();
+		//on viens récuperer la liste des modules dispo directement dans le dossier
+		// (comme ca pas besoin d'avoir a les déclarer, plus simple pour d'eventuels modders)
+		$modulesFolderItems=scandir(__DIR__.'/../views/modules/');
+		//on initialise  un array de resultat
+		$modules=array();
+		//pourr tout ce qui a été récuperé
+		foreach ($modulesFolderItems as $item) {
+			//on ne selectionne que les dossier qui commence pas par "."
+			if ($item[0]!=='.') {
+				//et on les rentre dans notre liste de modules
+				array_push($modules,$item);
 			}
 		}
-		foreach ($modules as $module){
-			$moduleInfo= json_decode (file_get_contents(__DIR__.'/../views/modules/'.$module.'/info.json'),true);
+		//pour chaques modules,
+		foreach ($modules as $module) {
+			//on viens récuperer les info a partir du info.json
+			$moduleInfo=
+				json_decode(file_get_contents(__DIR__.'/../views/modules/'.$module.
+					'/info.json'),TRUE);
+			//et on les rentre dans notre tableau résultat
 			array_push($modulesList,$moduleInfo);
 		}
-$this->f3->set('modulesList', $modulesList);
+		//puis on passe le tableau résultat en variable globale
+		$this->f3->set('modulesList',$modulesList);
 	}
 
 }
