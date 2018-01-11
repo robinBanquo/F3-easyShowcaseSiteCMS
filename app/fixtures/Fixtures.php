@@ -2,27 +2,30 @@
 
 
 class Fixtures {
-	public $siteMap=[
-		[
-			'id'=>1,
-			'module'=>'paralax',
-		],
-		[
-			'id'=>2,
-			'module'=>'textSection',
-		],
-		[
-			'id'=>3,
-			'module'=>'paralax',
-		],
-		[
-			'id'=>4,
-			'module'=>'threeGoals',
-		],
-		[
-			'id'=>5,
-			'module'=>'paralax',
-		],
+	function siteMap() {
+		return [
+			[
+				'id'=>uniqid(),
+				'module'=>'paralax',
+			],
+			[
+				'id'=>uniqid(),
+				'module'=>'textSection',
+			],
+			[
+				'id'=>uniqid(),
+				'module'=>'paralax',
+			],
+			[
+				'id'=>uniqid(),
+				'module'=>'threeGoals',
+			],
+			[
+				'id'=>uniqid(),
+				'module'=>'paralax',
+			],
 
-	];
+		];
+	}
+
 }

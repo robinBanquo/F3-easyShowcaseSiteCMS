@@ -1,6 +1,16 @@
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="/public/js/materialize.js"></script>
+<script src="/public/js/adminEditScripts.js"></script>
 <script src="/public/js/init.js"></script>
 <script src="/app/views/base/nav/nav.js"></script>
 <script src="/app/views/base/footer/footer.js" ></script>
+<script src="/app/views/base/editBtns/editBtns.js" ></script>
+<repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
+	<script src="{{'/app/views/modules/'.@module.'/show.js'}}"></script>
+</repeat>
+<check if="{{ @isAdminPage }}">
+	<repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
+		<script src="{{'/app/views/modules/'.@module.'/edit.js'}}"></script>
+	</repeat>
+</check>

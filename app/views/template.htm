@@ -8,15 +8,15 @@
 
 <include href="./base/nav/nav.htm" />
 
-<include  href="./modules/paralax/module.htm" />
-<include href="./modules/threeGoals/module.htm" />
-<include  href="./modules/paralax/module.htm" />
-<include href="./modules/textSection/module.htm"/>
-<include  href="./modules/paralax/module.htm" />
+<repeat group="{{ @siteStructure }}" key="{{ @position }}" value="{{ @section}}">
+	<include if="{{ @isAdminPage }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='before'"/>
+	<include  href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}}"/>
+	<include if="{{ @isAdminPage && @position === count(@siteStructure)-1 }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
+</repeat>
+
 
 <include href="./base/footer/footer.htm" />
-
-
+<include if="{{@isAdminPage}}" href="./base/editBtns/addSectionModal.htm"/>
 <!--  Scripts-->
 <include href="./base/includes/scripts.htm" />
 

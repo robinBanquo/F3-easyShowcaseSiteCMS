@@ -97,4 +97,24 @@ TOOLS
 .no-padding {
 	padding: 0 !important;
 }
-
+.inline-block{
+	display: inline-block !important;
+}
+.static{
+	position: static !important;
+}
+.relative{
+	position: relative !important;
+}
+.absolute{
+	position : absolute !important;
+}
+.hidden{
+	visibility: hidden !important;
+}
+.displaynone{
+	display: none;
+}
+.fixed{
+	position: fixed !important;
+}

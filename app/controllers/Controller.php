@@ -36,14 +36,14 @@ class Controller {
 
 	function getSiteStructure(){
 
-		$siteStructure = $this->db->read('team');
+		$siteStructure = $this->db->read('siteStructure.json');
 		if(empty($siteStructure)){
 			$fixtures = new Fixtures();
-			$siteStructure = $fixtures->siteMap;
+			$siteStructure = $fixtures->siteMap();
 			$this->db->write('siteStructure.json',$siteStructure);
-			return $this->db->read('team');
+			return $this->db->read('siteStructure.json');
 		}else{
-			return $siteStructure();
+			return $siteStructure;
 		}
 	}
 
