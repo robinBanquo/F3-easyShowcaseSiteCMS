@@ -120,4 +120,38 @@ class EditController extends Controller {
 		//et on reroute vers la page d'admin
 		$this->f3->reroute('/admin');
 	}
+	function addToMenu() {
+		//in recupere l'id de la section
+		$moduleId=$this->f3->get('POST.id');
+		//in recupere le label envoyé"
+		$menuLabel=$this->f3->get('POST.label');
+		//on recupere la structure du site
+		$siteStructure=$this->getSiteStructure();
+		//on boucle sur la structure jusqu'a trouver notre module
+		foreach ($siteStructure as $i=>$section) {
+			if ($section['id']===$moduleId) {
+					$siteStructure[$i]['inMenuAs']=$menuLabel;
+			}
+		}
+		//on sauvegarde
+		$this->db->write('siteStructure.json',$siteStructure);
+		//et on reroute vers la page d'admin
+		$this->f3->reroute('/admin');
+	}
+	function removeFromMenu() {
+		//in recupere l'id de la section a supprimer dans les query parameters
+		$moduleId=$this->f3->get('GET.id');
+		//on recupere la structure du site
+		$siteStructure=$this->getSiteStructure();
+		//on boucle sur la structure jusqu'a trouver notre module
+		foreach ($siteStructure as $i=>$section) {
+			if ($section['id']===$moduleId) {
+				$siteStructure[$i]['inMenuAs']="";
+			}
+		}
+		//on sauvegarde
+		$this->db->write('siteStructure.json',$siteStructure);
+		//et on reroute vers la page d'admin
+		$this->f3->reroute('/admin');
+	}
 }

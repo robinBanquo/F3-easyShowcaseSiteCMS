@@ -1,5 +1,5 @@
 <div class="fixed-action-btn toolbar absolute" >
-	<a class="btn-floating  frama-orange hover-frama-purple generalMenuOptionsBtn">
+	<a class="btn-floating  frama-orange hover-frama-purple generalMenuOptionsBtn" style="bottom: 10px !important;right: 10px!important;">
 		<i class="large material-icons">build</i>
 	</a>
 	<ul>
@@ -17,8 +17,9 @@
 		</li>
 		<li class="waves-effect waves-light tooltipped "  data-position="bottom"
 			data-delay="250" data-tooltip="Ajouter un raccourci au menu">
-			<a href="#!"><i class="material-icons">note_add</i></a>
-		</li>
+			<a class="modal-trigger white-text addToMenuBtn" id="addToMenuBtn-{{@id}}" href="#add-to-menu-modal" >
+		<i class="material-icons">note_add</i></a>
+
 		<li class="waves-effect waves-light tooltipped "  data-position="bottom"
 			data-delay="250" data-tooltip="Options de la section">
 			<a href="#!"><i class="material-icons">settings</i></a>

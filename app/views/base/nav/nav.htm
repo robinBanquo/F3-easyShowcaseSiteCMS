@@ -2,11 +2,27 @@
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="#" class="brand-logo">Logo</a>
 		<ul class="right hide-on-med-and-down">
-			<li><a href="#">Navbar Link</a></li>
+			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
+				<check if="{{ @section['inMenuAs'] }}">
+					<li class="relative"><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a>
+					<check if="{{ @isAdmin && @isAdminPage }}">
+						<a  href="{{'/admin/edit/remove_from_menu?id='. @section['id']}}" class="btn-floating waves-effect waves-light grey lighten-2 hover-frama-purple absolute tooltipped"   data-position="bottom"
+						   data-delay="350" data-tooltip="retirer du menu" style="bottom: -20px; right: 10px" ><i class="material-icons">clear</i></a>
+
+					</check>
+					</li>
+				</check>
+
+			</repeat>
+
 		</ul>
 
 		<ul id="nav-mobile" class="side-nav">
-			<li><a href="#">Navbar Link</a></li>
+			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
+				<check if="{{ @section['inMenuAs'] }}">
+					<li><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a></li>
+				</check>
+			</repeat>
 		</ul>
 		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 	</div>

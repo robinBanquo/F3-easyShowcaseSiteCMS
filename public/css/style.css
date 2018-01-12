@@ -152,3 +152,8 @@ TOOLS
 	max-height: 80% !important;
 	height: 80% !important;
 }
+.small-modal {
+	width: 60% !important;
+	max-height: 50% !important;
+	height: 50% !important;
+}
