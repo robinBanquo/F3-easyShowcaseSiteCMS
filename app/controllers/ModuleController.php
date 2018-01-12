@@ -13,8 +13,8 @@ class ModuleController extends Controller {
 
 	function uploadImagesAndReturnPreview() {
 
-		$directory = __DIR__.'/../../
-		sites/'.$module
+		$directory = __DIR__.'/../../';
+
 		//$files will contain all the files uploaded, in your case 1 hence $files[0];
 //		$answer=array('answer'=>'Files transfer completed');
 //		$json=json_encode($answer);
