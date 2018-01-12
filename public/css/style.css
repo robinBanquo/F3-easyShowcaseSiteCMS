@@ -63,7 +63,7 @@ footer.page-footer {
 		COLORS
  */
 .frama-purple {
-	background-color: #635182;
+	background-color: #635182 !important;
 }
 
 .frama-purple-text {
@@ -71,7 +71,7 @@ footer.page-footer {
 }
 
 .frama-orange {
-	background-color: #C48A1B;
+	background-color: #C48A1B !important;
 }
 
 .frama-orange-text {
@@ -79,11 +79,11 @@ footer.page-footer {
 }
 
 .hover-frama-purple:hover {
-	background-color: #635182;
+	background-color: #635182 !important;
 }
 
 .hover-frama-orange:hover {
-	background-color: #C48A1B;
+	background-color: #C48A1B !important;
 }
 
 /****************************
@@ -156,4 +156,33 @@ TOOLS
 	width: 60% !important;
 	max-height: 50% !important;
 	height: 50% !important;
+}
+.show-on-li-hover{
+	visibility: hidden;
+}
+li:hover .show-on-li-hover{
+	visibility: visible;
+}
+
+.show-on-section-hover{
+	visibility: hidden;
+}
+section:hover .show-on-li-hover{
+	visibility: visible;
+}
+
+.addSectionBtn{
+	visibility: hidden;
+}
+.addSectionBtn-parent:hover .addSectionBtn{
+	visibility: visible;
+}
+.moduleBtn{
+	opacity:0;
+}
+.module:hover .moduleBtn{
+	opacity: 1;
+}
+.edit-btn{
+background-color: rgba(196, 138, 27, 0.89) !important;
 }

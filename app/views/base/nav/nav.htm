@@ -1,13 +1,15 @@
 <nav class="white nav" role="navigation">
 	<div class="nav-wrapper container">
-		<a id="logo-container" href="#" class="brand-logo">Logo</a>
+		<a id="logo-container" href="#" class="brand-logo">{{@siteName}}</a>
 		<ul class="right hide-on-med-and-down">
 			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
 				<check if="{{ @section['inMenuAs'] }}">
 					<li class="relative"><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a>
 					<check if="{{ @isAdmin && @isAdminPage }}">
-						<a  href="{{'/admin/edit/remove_from_menu?id='. @section['id']}}" class="btn-floating waves-effect waves-light grey lighten-2 hover-frama-purple absolute tooltipped"   data-position="bottom"
-						   data-delay="350" data-tooltip="retirer du menu" style="bottom: -20px; right: 10px" ><i class="material-icons">clear</i></a>
+						<a  href="#!" class="btn-floating waves-effect waves-light frama-orange hover-frama-purple absolute tooltipped show-on-li-hover editMenuLabel"   data-position="bottom"
+							data-delay="350" data-tooltip="Modifier" style="bottom: -20px; left: -20px" id="editMenuLabel-{{@section['id']}}-{{@section['inMenuAs']}}"><i class="material-icons">edit</i></a>
+						<a  href="{{'/admin/edit/remove_from_menu?id='. @section['id']}}" class="btn-floating waves-effect waves-light frama-orange hover-frama-purple absolute tooltipped show-on-li-hover "   data-position="bottom"
+						   data-delay="350" data-tooltip="Retirer du menu"  style="bottom: -20px; left: 30px" ><i class="material-icons">clear</i></a>
 
 					</check>
 					</li>

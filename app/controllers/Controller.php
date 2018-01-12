@@ -63,4 +63,48 @@ class Controller {
 			return $siteStructure;
 		}
 	}
+
+	/****************
+	 * methode permettant de recuperer la liste des modules possibles
+	 */
+	function getModuleList(){
+		//on ititialise un tableau de résultat
+		$modulesList=array();
+		//on viens récuperer la liste des modules dispo directement dans le dossier
+		// (comme ca pas besoin d'avoir a les déclarer, plus simple pour d'eventuels modders)
+		$modulesFolderItems=scandir(__DIR__.'/../views/modules/');
+		//on initialise  un array de resultat
+		$modules=array();
+		//pourr tout ce qui a été récuperé
+		foreach ($modulesFolderItems as $item) {
+			//on ne selectionne que les dossier qui commence pas par "."
+			if ($item[0]!=='.') {
+				//et on les rentre dans notre liste de modules
+				array_push($modules,$item);
+			}
+		}
+		//pour chaques modules,
+		foreach ($modules as $module) {
+			//on viens récuperer les info a partir du info.json
+			$moduleInfo=
+				json_decode(file_get_contents(__DIR__.'/../views/modules/'.$module.
+					'/info.json'),TRUE);
+			//et on les rentre dans notre tableau résultat
+			array_push($modulesList,$moduleInfo);
+
+		}
+		//puis on passe le tableau résultat en variable globale
+		$this->f3->set('modulesList',$modulesList);
+		return $modules;
+	}
+	function checkAdminOrReroute(){
+		if (!$this->isAdmin()) {
+			//on rajoute un petit message d'erreur qui sera affiché sur la page de login
+			$this->f3->set('SESSION.loginPageMessage',
+				"vous devez vous authentifier pour accéder au options d'administration");
+			//puis on renvoie vers la page de login
+			$template=new Template;
+			echo $template->render('login.htm');
+		}
+	}
 }

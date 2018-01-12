@@ -1,11 +1,11 @@
 <div id="add-to-menu-modal" class="modal modal-fixed-footer small-modal">
 	<div class="modal-content ">
 		<h4 class="grey-text">Ajouter cette section au menu</h4>
-		<form method="post" action="/admin/edit/add_to_menu" id="addToMenuForm" >
+		<form method="post" action="/admin/edit/add_to_menu" class="addToMenuForm" >
 			<input type="text" name="id" class="displaynone">
 			<div class="row" style="margin-top: 30px">
 				<div class="input-field col s12 m6 offset-m3">
-					<input id="add-to-menu-label" name="label" type="text" required class="validate grey-text">
+					<input  name="label" type="text" required class="validate grey-text">
 					<label for="add-to-menu-label">Nom tel qu'affiché dans le menu</label>
 				</div>
 			</div>
@@ -19,4 +19,4 @@
 	<div class="modal-footer">
 		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons">clears</i></a>
 	</div>
-</div>">
+</div>
