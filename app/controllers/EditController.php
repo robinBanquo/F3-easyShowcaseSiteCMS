@@ -86,7 +86,8 @@ class EditController extends Controller {
 		foreach ($siteStructure as $i=>$section) {
 			//lorqu'on trouve le bon module
 			if ($section['id']===$moduleId) {
-				if ($i>0) {//on le déplace vers le haut(sauf si c'etait pas déja le premier)
+				if ($i>
+					0) {//on le déplace vers le haut(sauf si c'etait pas déja le premier)
 					$el=$siteStructure[$i-1];
 					$siteStructure[$i-1]=$siteStructure[$i];
 					$siteStructure[$i]=$el;
@@ -108,7 +109,8 @@ class EditController extends Controller {
 		//on boucle sur la structure jusqu'a trouver notre module
 		foreach ($siteStructure as $i=>$section) {
 			if ($section['id']===$moduleId) {
-				if ($i<count($siteStructure)-1) {//et on le descends dans le tableau si c'est pas le dernier element
+				if ($i<count($siteStructure)-
+					1) {//et on le descends dans le tableau si c'est pas le dernier element
 					$el=$siteStructure[$i+1];
 					$siteStructure[$i+1]=$siteStructure[$i];
 					$siteStructure[$i]=$el;
@@ -120,6 +122,8 @@ class EditController extends Controller {
 		//et on reroute vers la page d'admin
 		$this->f3->reroute('/admin');
 	}
+
+	//methode d'ajout au menu d'une section pour une navigation rapide
 	function addToMenu() {
 		//in recupere l'id de la section
 		$moduleId=$this->f3->get('POST.id');
@@ -130,7 +134,7 @@ class EditController extends Controller {
 		//on boucle sur la structure jusqu'a trouver notre module
 		foreach ($siteStructure as $i=>$section) {
 			if ($section['id']===$moduleId) {
-					$siteStructure[$i]['inMenuAs']=$menuLabel;
+				$siteStructure[$i]['inMenuAs']=$menuLabel;
 			}
 		}
 		//on sauvegarde
@@ -138,6 +142,8 @@ class EditController extends Controller {
 		//et on reroute vers la page d'admin
 		$this->f3->reroute('/admin');
 	}
+
+	//methode de suppression d'un element du menu
 	function removeFromMenu() {
 		//in recupere l'id de la section a supprimer dans les query parameters
 		$moduleId=$this->f3->get('GET.id');
@@ -149,6 +155,33 @@ class EditController extends Controller {
 				$siteStructure[$i]['inMenuAs']="";
 			}
 		}
+		//on sauvegarde
+		$this->db->write('siteStructure.json',$siteStructure);
+		//et on reroute vers la page d'admin
+		$this->f3->reroute('/admin');
+	}
+
+	function saveUglyForm() {
+		$siteStructure=$this->getSiteStructure();
+		$postArray=$this->f3->get('POST');
+
+		foreach ($postArray as $key=>$value) {
+			$splittedKey=explode("-",$key);
+			$id=$splittedKey[1];
+			$name=$splittedKey[2];
+			foreach ($siteStructure as $i=>$section) {
+				if ($section['id']===$id) {
+					foreach ($section['fields'] as $fieldName=>$fieldContent) {
+						if ($fieldName===
+							$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
+							$siteStructure[$i]['fields'][$fieldName]['value']=$value;
+							var_dump($value);
+						}
+					}
+				}
+			}
+		}
+
 		//on sauvegarde
 		$this->db->write('siteStructure.json',$siteStructure);
 		//et on reroute vers la page d'admin

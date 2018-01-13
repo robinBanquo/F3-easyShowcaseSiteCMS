@@ -1,5 +1,46 @@
 {
   "name" : "three_goals",
   "title" : "Trois objectifs",
-  "description" : "Module permettant d'afficher trois aspects de ce que vous souhaitez presenter à travers le site"
+  "description" : "Module permettant d'afficher trois aspects de ce que vous souhaitez presenter à travers le site",
+  "fields" : {
+    "icon1" : {
+      "type": "text",
+      "value" : "flash_on"
+    },
+    "title1" : {
+      "type": "text",
+      "value" : "Créer un site web en moins d'une heure"
+    },
+    "content1" : {
+      "type": "text",
+      "value" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, "
+
+    },
+    "icon2" : {
+      "type": "text",
+      "value" : "group"
+    },
+    "title2" : {
+      "type": "text",
+      "value" : "D'une simplicité décoiffante"
+    },
+    "content2" : {
+      "type": "text",
+      "value" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere,"
+
+    },
+    "icon3" : {
+      "type": "text",
+      "value" : "settings"
+    },
+    "title3" : {
+      "type": "text",
+      "value" : "Une configuration simple et personnalisée"
+    },
+    "content3" : {
+      "type": "text",
+      "value" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+
+    }
+  }
 }

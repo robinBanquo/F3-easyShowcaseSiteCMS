@@ -1,4 +1,4 @@
-<nav class="white nav" role="navigation">
+<nav class="white nav" id="mainNav" role="navigation">
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="#" class="brand-logo">{{@siteName}}</a>
 		<ul class="right hide-on-med-and-down">
@@ -14,10 +14,9 @@
 					</check>
 					</li>
 				</check>
-
 			</repeat>
-
 		</ul>
+
 
 		<ul id="nav-mobile" class="side-nav">
 			<repeat group="{{ @siteStructure }}" value="{{ @section }}">

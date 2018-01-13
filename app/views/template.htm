@@ -11,7 +11,7 @@
 <repeat group="{{ @siteStructure }}" key="{{ @position }}" value="{{ @section}}">
 	<section class="relative " id="{{@section[id]}}">
 		<include if="{{ @isAdminPage }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='before'"/>
-		<include href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}}"/>
+		<include href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}},fields={{@section[fields]}}"/>
 		<include if="{{ @isAdminPage && @position === count(@siteStructure)-1 }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
 	<include if="{{ @isAdminPage }}" href="./base/generalModuleOptions/generalModuleOptions.htm" with="id={{@section[id]}}" />
 		<check if="{{ @isAdminPage }}">
@@ -22,9 +22,14 @@
 
 
 <include href="./base/footer/footer.htm"/>
-<include if="{{@isAdminPage}}" href="./base/editBtns/addSectionModal.htm"/>
-<include if="{{@isAdminPage}}" href="./base/generalModuleOptions/addToMenuModal.htm"/>
-<include if="{{@isAdminPage}}" href="./base/addImage/addImage.htm"/>
+<check if="{{ @isAdminPage }}">
+	<include  href="./base/editBtns/addSectionModal.htm"/>
+	<include  href="./base/includes/saveBtn.htm"/>
+	<include href="./base/generalModuleOptions/addToMenuModal.htm"/>
+	<include href="./base/uglyForm/uglyForm.htm" />
+	<include href="./base/siteOptionsModal/siteOptionsModal.htm" />
+</check>
+
 <!--  Scripts-->
 <include href="./base/includes/scripts.htm"/>
 

@@ -51,17 +51,21 @@ class Controller {
 		$siteStructure = $this->db->read('siteStructure.json');
 		//on commence par vérifier si il y a bien quelquechose en base
 		if(empty($siteStructure)){//si c'est vide on fait l'opération d'initialisation
-			//on vient utiliser la methode siteMap de l'objet fixtures qui renvoie une page type
-			$fixtures = new Fixtures();
-			$siteStructure = $fixtures->siteMap();
-			//et on l'enregistre dans notre bdd
-			$this->db->write('siteStructure.json',$siteStructure);
+			$this->initStructure();
 			//on renvoie la valeur
 			return $this->db->read('siteStructure.json');
 		}else{
 			//sinon, on renvoie direct la valeur
 			return $siteStructure;
 		}
+	}
+	//opération d'initialisation lorsque la structure du site est vide
+	function initStructure(){
+		//on vient utiliser la methode siteMap de l'objet fixtures qui renvoie une page type
+		$fixtures = new Fixtures();
+		$siteStructure = $fixtures->siteMap();
+		//et on l'enregistre dans notre bdd
+		$this->db->write('siteStructure.json',$siteStructure);
 	}
 
 	/****************
@@ -97,6 +101,7 @@ class Controller {
 		$this->f3->set('modulesList',$modulesList);
 		return $modules;
 	}
+	//methode servant dans le middleware
 	function checkAdminOrReroute(){
 		if (!$this->isAdmin()) {
 			//on rajoute un petit message d'erreur qui sera affiché sur la page de login

@@ -163,9 +163,11 @@ TOOLS
 li:hover .show-on-li-hover{
 	visibility: visible;
 }
-
 .show-on-section-hover{
-	visibility: hidden;
+	opacity: 0 !important;
+}
+section:hover .show-on-section-hover{
+	opacity: 1 !important;
 }
 section:hover .show-on-li-hover{
 	visibility: visible;
@@ -185,4 +187,11 @@ section:hover .show-on-li-hover{
 }
 .edit-btn{
 background-color: rgba(196, 138, 27, 0.89) !important;
+}
+.col5{
+	width: 20%;
+}
+
+#siteOptionsModal .indicator{
+	background-color: rgba(196, 138, 27, 0.89) !important;
 }

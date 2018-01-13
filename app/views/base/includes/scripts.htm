@@ -13,6 +13,8 @@
 <check if="{{ @isAdminPage }}">
 	<script src="/app/views/base/editBtns/editBtns.js" ></script>
 	<script src="/app/views/base/generalModuleOptions/generalModuleOptions.js" ></script>
+	<script src="/app/views/base/siteOptionsModal/siteOptionsModal.js" ></script>
+	<script src="/app/views/base/uglyForm/uglyForm.js" ></script>
 	<repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
 		<script src="{{'/app/views/modules/'.@module.'/edit.js'}}"></script>
 	</repeat>

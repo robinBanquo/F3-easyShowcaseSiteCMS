@@ -7,25 +7,36 @@ class Fixtures {
 			[
 				'id'=>uniqid(),
 				'module'=>'paralax',
+				'fields'=>$this->getModuleInitValues('paralax')
 			],
 			[
 				'id'=>uniqid(),
-				'module'=>'textSection',
+				'module'=>'text_section',
+				'fields'=>$this->getModuleInitValues('text_section')
 			],
 			[
 				'id'=>uniqid(),
 				'module'=>'paralax',
+				'fields'=>$this->getModuleInitValues('paralax')
 			],
 			[
 				'id'=>uniqid(),
 				'module'=>'three_goals',
+				'fields'=>$this->getModuleInitValues('three_goals')
 			],
 			[
 				'id'=>uniqid(),
 				'module'=>'paralax',
+				'fields'=>$this->getModuleInitValues('paralax')
 			],
 
 		];
+	}
+	function getModuleInitValues($module){
+		$moduleInfo=
+			json_decode(file_get_contents(__DIR__.'/../views/modules/'.$module.
+				'/info.json'),TRUE);
+		return $moduleInfo['fields'];
 	}
 
 }
