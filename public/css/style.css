@@ -85,7 +85,9 @@ footer.page-footer {
 .hover-frama-orange:hover {
 	background-color: #C48A1B !important;
 }
-
+.frama-border-orange:hover {
+	border: 4px solid #C48A1B
+}
 /****************************
 TOOLS
  */
@@ -192,6 +194,9 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 	width: 20%;
 }
 
+.card{
+	margin: 0 0 20px 0 !important;
+}
 #siteOptionsModal .indicator{
 	background-color: rgba(196, 138, 27, 0.89) !important;
 }

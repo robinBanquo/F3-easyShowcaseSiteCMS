@@ -175,7 +175,6 @@ class EditController extends Controller {
 						if ($fieldName===
 							$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
 							$siteStructure[$i]['fields'][$fieldName]['value']=$value;
-							var_dump($value);
 						}
 					}
 				}
@@ -186,5 +185,49 @@ class EditController extends Controller {
 		$this->db->write('siteStructure.json',$siteStructure);
 		//et on reroute vers la page d'admin
 		$this->f3->reroute('/admin');
+	}
+
+	function addImgTolibrary() {
+		$file=$this->f3->get('FILES')['file'];
+		if ($file['error']>0) {
+			echo json_encode(array('errors'=>$file,
+				'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
+		} else {
+			$validsExtentions=array('jpg','jpeg','gif','png');
+			$extension_upload=strtolower(substr(strrchr($file['name'],'.'),1));
+			if (!in_array($extension_upload,$validsExtentions)) {
+				echo json_encode(array('errors'=>$file,
+					'errorMsg'=>"Extention de fichier invalide"));
+			} else {
+				$maxsize=5*1048576; //5Mo
+				$image_sizes=getimagesize($file['tmp_name']);
+				if ($image_sizes[0]>$maxsize OR $image_sizes[1]>$maxsize) {
+					echo json_encode(array('errors'=>$file,
+						'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
+				} else {
+					$fileName=$file['name'];
+					$destination='./sites/'.$this->siteName.'/img/'.$fileName;
+					$result=move_uploaded_file($file['tmp_name'],$destination);
+					if (!$result) {
+						echo json_encode(array('errors'=>$file,
+							'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
+					} else {
+						$siteFiles=$this->db->read('siteFiles.json');
+						array_push($siteFiles,array(
+							'type'=>'img',
+							'url'=>$destination,
+							'alt'=> ''
+						));
+						$this->db->write('siteFiles.json', $siteFiles);
+						echo json_encode(array(
+							'imgUrl'=>$destination));
+					}
+				}
+			}
+
+
+			//Créer un identifiant difficile à deviner
+			$fileName=$file['name'];
+		}
 	}
 }
