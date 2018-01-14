@@ -101,6 +101,7 @@ class Controller {
 		$this->f3->set('modulesList',$modulesList);
 		return $modules;
 	}
+
 	//methode servant dans le middleware
 	function checkAdminOrReroute(){
 		if (!$this->isAdmin()) {

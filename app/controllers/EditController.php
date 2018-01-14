@@ -201,6 +201,7 @@ class EditController extends Controller {
 			} else {
 				$maxsize=5*1048576; //5Mo
 				$image_sizes=getimagesize($file['tmp_name']);
+				list($width, $height, $type, $attr)=getimagesize($file['tmp_name']);
 				if ($image_sizes[0]>$maxsize OR $image_sizes[1]>$maxsize) {
 					echo json_encode(array('errors'=>$file,
 						'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
@@ -213,10 +214,11 @@ class EditController extends Controller {
 							'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
 					} else {
 						$siteFiles=$this->db->read('siteFiles.json');
-						array_push($siteFiles,array(
+						array_unshift($siteFiles,array(
 							'type'=>'img',
 							'url'=>$destination,
-							'alt'=> ''
+							'alt'=> '',
+							'seize'=>($width && $height)? $width."x".$height : ""
 						));
 						$this->db->write('siteFiles.json', $siteFiles);
 						echo json_encode(array(

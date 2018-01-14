@@ -11,10 +11,6 @@
       "type": "text",
       "value" : "/app/views/modules/paralax/background3.jpg"
 
-    },
-    "imgAlt" : {
-      "type": "text",
-      "value" : "background3"
     }
   }
 }

@@ -30,6 +30,7 @@ class ShowCaseController extends Controller {
 			$this->f3->reroute('/login');
 		}
 	}
+
 	//methode de génération de la page
 	function generatePage() {
 		//on vient récuperer la structure du site telle qu'elle
@@ -62,7 +63,12 @@ class ShowCaseController extends Controller {
 	//methode de generation des infos complémentaires nécessaires a la page admin
 	function generateAdminOnlyData() {
 		$this->getModuleList();
+		$this->getFilesList();
 	}
 
+	function getFilesList() {
+		$FilesList=$this->db->read('siteFiles.json');
+		$this->f3->set('filesList',$FilesList);
+	}
 
 }
