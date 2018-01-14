@@ -65,10 +65,11 @@ class ShowCaseController extends Controller {
 		$this->getModuleList();
 		$this->getFilesList();
 	}
-
+	//methode permettant de transmettre au script js de gestion de
+	// la bibliotheque d'image le contenu de la table file au format json
 	function getFilesList() {
 		$FilesList=$this->db->read('siteFiles.json');
-		$this->f3->set('filesList',$FilesList);
+		$this->f3->set('filesList',json_encode($FilesList));
 	}
 
 }

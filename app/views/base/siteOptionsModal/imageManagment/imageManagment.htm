@@ -1,23 +1,10 @@
-<div class="" style="columns: 3 auto !important; padding-bottom: 0 !important;">
+<div class="columnContainer"  id="imageManagment"></div>
 
-	<div class="blockList">
-		<a href="#!" class="card light-shadow" id="addImageToLibrary" style="background-color: rgb(255,255,255) !important;">
-			<div class="card-content light-shadow frama-border-orange tooltipped" data-position="top"
-				 data-delay="350" data-tooltip="Ajouter une image à votre bibliothèque" style="text-align: center; background-color: rgb(255,255,255) !important;  margin-bottom: 20px !important;">
-				<i class="material-icons frama-orange-text  lighten-2 large" style="margin: 50px">add</i>
-			</div>
+<script>
+	var initialFiles = JSON.parse('{{@filesList | raw}}')
 
-		</a>
-	</div>
 
-	<repeat group="{{ @filesList }}" key={{@key4}} value="{{ @file }}">
-		<div class="blockList">
-			<include href="./base/siteOptionsModal/imageManagment/cardFile.htm" with="file={{@file}}"/>
-		</div>
-	</repeat>
 
-</div>
+</script>
 
-<form id="addImageForm" action="#!" class="displaynone">
-	<input type="file" name="file">
-</form>
+

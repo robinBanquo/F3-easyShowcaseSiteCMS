@@ -161,51 +161,67 @@ class EditController extends Controller {
 		$this->f3->reroute('/admin');
 	}
 
+	/******************************
+	 * Methode permettant la sauvegarde de tout les elements modifiables des modules
+	 */
 	function saveUglyForm() {
+		//on recupere la structure du site
 		$siteStructure=$this->getSiteStructure();
+		//on récupere le tableau contenu dans _POST
 		$postArray=$this->f3->get('POST');
 
+		//pour chacunes des entrées
 		foreach ($postArray as $key=>$value) {
+			//on récupere les infos contenues dans les clef des input name
 			$splittedKey=explode("-",$key);
 			$id=$splittedKey[1];
 			$name=$splittedKey[2];
+			//puis on boucle sur notre structure
 			foreach ($siteStructure as $i=>$section) {
+				//si on est dans la bonne section
 				if ($section['id']===$id) {
+					//on cherche le bon name
 					foreach ($section['fields'] as $fieldName=>$fieldContent) {
-						if ($fieldName===
-							$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
+						if ($fieldName===$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
+							//puis on update cette entrée
 							$siteStructure[$i]['fields'][$fieldName]['value']=$value;
 						}
 					}
 				}
 			}
 		}
-
-		//on sauvegarde
+		//on sauvegarde notre tableau modifié par la méthode
 		$this->db->write('siteStructure.json',$siteStructure);
 		//et on reroute vers la page d'admin
 		$this->f3->reroute('/admin');
 	}
 
+	/****************************************
+	 * Methode en AJAX d'ajout d'une image a la bibliotheque utilisateur
+	 */
 	function addImgTolibrary() {
+		//on viens récuoere les fichier envoyé par l'utilisateur
 		$file=$this->f3->get('FILES')['file'];
+		//gestion des erreurs d'upload
 		if ($file['error']>0) {
 			echo json_encode(array('errors'=>$file,
 				'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
-		} else {
+		} else {//gestion des erreurs d'extension
 			$validsExtentions=array('jpg','jpeg','gif','png');
 			$extension_upload=strtolower(substr(strrchr($file['name'],'.'),1));
 			if (!in_array($extension_upload,$validsExtentions)) {
 				echo json_encode(array('errors'=>$file,
 					'errorMsg'=>"Extention de fichier invalide"));
 			} else {
-				$maxsize=5*1048576; //5Mo
-				$image_sizes=getimagesize($file['tmp_name']);
+				//gestion de la taille limite des fichier
+				$maxsize=5 *8* 1000 * 1000; //5Mo
+				$file_sizes=$file['size'];
 				list($width, $height, $type, $attr)=getimagesize($file['tmp_name']);
-				if ($image_sizes[0]>$maxsize OR $image_sizes[1]>$maxsize) {
+				if ($file_sizes>$maxsize ) {
 					echo json_encode(array('errors'=>$file,
-						'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
+						'errorMsg'=>"Votre fichier est trop volumineux"));
 				} else {
+					//gestion de la sauvegarde dui fichier image dans le dossier img du site
 					$fileName=$file['name'];
 					$destination='./sites/'.$this->siteName.'/img/'.$fileName;
 					$result=move_uploaded_file($file['tmp_name'],$destination);
@@ -213,23 +229,26 @@ class EditController extends Controller {
 						echo json_encode(array('errors'=>$file,
 							'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
 					} else {
+						//gestion de l'archivage des infos du fichier dans la table siteFile
+						//on recupere la table
 						$siteFiles=$this->db->read('siteFiles.json');
-						array_unshift($siteFiles,array(
+						//on formate la nouvelle entrée
+						$toPush =array(
+							'id'=>uniqid(),
 							'type'=>'img',
 							'url'=>$destination,
 							'alt'=> '',
 							'seize'=>($width && $height)? $width."x".$height : ""
-						));
+						);
+						//on l'insere au début du tableau
+						array_unshift($siteFiles,$toPush);
+						//on sauvegarde la nouvelle table
 						$this->db->write('siteFiles.json', $siteFiles);
-						echo json_encode(array(
-							'imgUrl'=>$destination));
+						//et on renvoie les infos de la nouvelle entrée en json pour le script js
+						echo json_encode($toPush);
 					}
 				}
 			}
-
-
-			//Créer un identifiant difficile à deviner
-			$fileName=$file['name'];
 		}
 	}
 }
