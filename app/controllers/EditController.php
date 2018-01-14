@@ -182,7 +182,8 @@ class EditController extends Controller {
 				if ($section['id']===$id) {
 					//on cherche le bon name
 					foreach ($section['fields'] as $fieldName=>$fieldContent) {
-						if ($fieldName===$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
+						if ($fieldName===
+							$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
 							//puis on update cette entrée
 							$siteStructure[$i]['fields'][$fieldName]['value']=$value;
 						}
@@ -214,10 +215,10 @@ class EditController extends Controller {
 					'errorMsg'=>"Extention de fichier invalide"));
 			} else {
 				//gestion de la taille limite des fichier
-				$maxsize=5 *8* 1000 * 1000; //5Mo
+				$maxsize=5*8*1000*1000; //5Mo
 				$file_sizes=$file['size'];
-				list($width, $height, $type, $attr)=getimagesize($file['tmp_name']);
-				if ($file_sizes>$maxsize ) {
+				list($width,$height,$type,$attr)=getimagesize($file['tmp_name']);
+				if ($file_sizes>$maxsize) {
 					echo json_encode(array('errors'=>$file,
 						'errorMsg'=>"Votre fichier est trop volumineux"));
 				} else {
@@ -233,22 +234,54 @@ class EditController extends Controller {
 						//on recupere la table
 						$siteFiles=$this->db->read('siteFiles.json');
 						//on formate la nouvelle entrée
-						$toPush =array(
+						$toPush=array(
 							'id'=>uniqid(),
 							'type'=>'img',
 							'url'=>$destination,
-							'alt'=> '',
-							'seize'=>($width && $height)? $width."x".$height : ""
+							'alt'=>'',
+							'size'=>($width && $height)?$width."x".$height:""
 						);
+						$alreadyExist = FALSE;
+						foreach($siteFiles as $searched){
+							if($searched['url']=== $destination){
+								echo json_encode(array('errors'=>$file,
+									'errorMsg'=>"La bibliothèque contient déjà un fichier du meme nom"));
+								$alreadyExist = TRUE;
+							}
+						}
 						//on l'insere au début du tableau
-						array_unshift($siteFiles,$toPush);
-						//on sauvegarde la nouvelle table
-						$this->db->write('siteFiles.json', $siteFiles);
-						//et on renvoie les infos de la nouvelle entrée en json pour le script js
-						echo json_encode($toPush);
+						if(!$alreadyExist){
+							array_unshift($siteFiles,$toPush);
+							//on sauvegarde la nouvelle table
+							$this->db->write('siteFiles.json',$siteFiles);
+							//et on renvoie les infos de la nouvelle entrée en json pour le script js
+							echo json_encode($toPush);
+						}
+
 					}
 				}
 			}
 		}
+	}
+
+	/****************************************
+	 * Methode en AJAX d'ajout d'une image a la bibliotheque utilisateur
+	 */
+	function deleteImg() {
+		//on viens récuoere les fichier envoyé par l'utilisateur
+		$id=$this->f3->get('GET')['id'];
+		//on récupere la table sitefile
+		$siteFiles=$this->db->read('siteFiles.json');
+		//on formate la nouvelle entrée
+		foreach ($siteFiles as $key=> $fileInfo){
+			if($fileInfo['id'] === $id){
+				unlink($fileInfo['url']);
+				array_splice($siteFiles, $key,1);
+			}
+		}
+		//on sauvegarde la nouvelle table
+		$this->db->write('siteFiles.json',$siteFiles);
+		//et on renvoie les infos de la nouvelle entrée en json pour le script js
+		echo json_encode(array('deletedId'=>$id));
 	}
 }

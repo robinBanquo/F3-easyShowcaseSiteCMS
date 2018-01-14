@@ -171,6 +171,25 @@ li:hover .show-on-li-hover{
 section:hover .show-on-section-hover{
 	opacity: 1 !important;
 }
+.children-hover{
+	opacity: 0;
+}
+.parent-hover:hover .children-hover{
+	opacity: 1;
+}
+.lightButton{
+	background-color: rgba(255, 255, 255, 0.4);
+}
+.lightButton:hover{
+	background-color: #C48A1B;
+}
+.lightButton:hover i{
+	color: white !important;
+}
+.lightButton i{
+	color: #1e1e1e !important;
+}
+
 section:hover .show-on-li-hover{
 	visibility: visible;
 }
@@ -207,8 +226,8 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 }
 .blockList{
 	width: 100% !important;
-	padding: 0 10px 0px 10px;
-	margin-bottom: 10px !important;
+	padding: 15px;
+	height: auto;
 }
 
 .columnContainer{
@@ -230,18 +249,12 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 
 @media (max-width: 1400px) {
 	.columnContainer {
-		-moz-column-count:    4;
-		-webkit-column-count: 4;
-		column-count:         4;
-	}
-}
-@media (max-width: 1200px) {
-	.columnContainer {
 		-moz-column-count:    3;
 		-webkit-column-count: 3;
 		column-count:         3;
 	}
 }
+
 @media (max-width: 800px) {
 	.columnContainer {
 		-moz-column-count:    2;
