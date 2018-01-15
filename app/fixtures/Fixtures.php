@@ -32,6 +32,12 @@ class Fixtures {
 
 		];
 	}
+	function siteOptions() {
+		$themesList = json_decode(file_get_contents(__DIR__.'/../config/themes.json'),TRUE);
+		return [
+			"theme"=>$themesList["Pinky"]
+		];
+	}
 	function getModuleInitValues($module){
 		$moduleInfo=
 			json_decode(file_get_contents(__DIR__.'/../views/modules/'.$module.

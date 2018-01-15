@@ -68,6 +68,32 @@ class Controller {
 		$this->db->write('siteStructure.json',$siteStructure);
 	}
 
+	/**************************
+	 * Methode de récuperation des options du site de l'utilisateur a partir de sa bdd en flat file
+	 * @return array
+	 */
+	function getSiteOptions(){
+		//on recuper l'entrée dans la base
+		$siteOptions = $this->db->read('siteOptions.json');
+		//on commence par vérifier si il y a bien quelquechose en base
+		if(empty($siteOptions)){//si c'est vide on fait l'opération d'initialisation
+			$this->initOptions();
+			//on renvoie la valeur
+			return $this->db->read('siteOptions.json');
+		}else{
+			//sinon, on renvoie direct la valeur
+			return $siteOptions;
+		}
+	}
+	//opération d'initialisation lorsque la structure du site est vide
+	function initOptions(){
+		//on vient utiliser la methode siteMap de l'objet fixtures qui renvoie une page type
+		$fixtures = new Fixtures();
+		$siteOptions = $fixtures->siteOptions();
+		//et on l'enregistre dans notre bdd
+		$this->db->write('siteOptions.json',$siteOptions);
+	}
+
 	/****************
 	 * methode permettant de recuperer la liste des modules possibles
 	 */

@@ -1,10 +1,10 @@
-<nav class="white nav" id="mainNav" role="navigation">
-	<div class="nav-wrapper container">
-		<a id="logo-container" href="#" class="brand-logo">{{@siteName}}</a>
+<nav class="nav main-background" id="mainNav" role="navigation">
+	<div class=" nav-wrapper container">
+		<a id="logo-container" href="#" class="brand-logo main-color">{{@siteName}}</a>
 		<ul class="right hide-on-med-and-down">
 			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
 				<check if="{{ @section['inMenuAs'] }}">
-					<li class="relative"><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a>
+					<li class="relative main-color"><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a>
 					<check if="{{ @isAdmin && @isAdminPage }}">
 						<a  href="#!" class="btn-floating waves-effect waves-light frama-orange hover-frama-purple absolute tooltipped show-on-li-hover editMenuLabel"   data-position="bottom"
 							data-delay="350" data-tooltip="Modifier" style="bottom: -20px; left: -20px" id="editMenuLabel-{{@section['id']}}-{{@section['inMenuAs']}}"><i class="material-icons">edit</i></a>
@@ -16,15 +16,5 @@
 				</check>
 			</repeat>
 		</ul>
-
-
-		<ul id="nav-mobile" class="side-nav">
-			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
-				<check if="{{ @section['inMenuAs'] }}">
-					<li><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a></li>
-				</check>
-			</repeat>
-		</ul>
-		<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
 	</div>
 </nav>

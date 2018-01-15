@@ -30,8 +30,9 @@ class EditController extends Controller {
 		$siteStructure=$this->getSiteStructure();
 		//on cree un array pour acceuillir la nouvelle structure
 		$newSiteStructure=array();
+		$fixtures = new Fixtures();
 		//on vient créer un id pour cette section et lui donner aussi son module appelé
-		$newSection=array('id'=>uniqid(),'module'=>$module);
+		$newSection=array('id'=>uniqid(),'module'=>$module, "fields"=> $fixtures->getModuleInitValues($module));
 		//pour chaque element de l'anciene structure
 		foreach ($siteStructure as $i=>$section) {
 			//si on est sur la section réference pour l'ajout
@@ -200,60 +201,60 @@ class EditController extends Controller {
 	/****************************************
 	 * Methode en AJAX d'ajout d'une image a la bibliotheque utilisateur
 	 */
-	function addImgTolibrary() {
+	function addMediaTolibrary() {
 		//on viens récuoere les fichier envoyé par l'utilisateur
-		$file=$this->f3->get('FILES')['file'];
+		$media=$this->f3->get('FILES')['media'];
 		//gestion des erreurs d'upload
-		if ($file['error']>0) {
-			echo json_encode(array('errors'=>$file,
+		if ($media['error']>0) {
+			echo json_encode(array('errors'=>$media,
 				'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
 		} else {//gestion des erreurs d'extension
 			$validsExtentions=array('jpg','jpeg','gif','png');
-			$extension_upload=strtolower(substr(strrchr($file['name'],'.'),1));
+			$extension_upload=strtolower(substr(strrchr($media['name'],'.'),1));
 			if (!in_array($extension_upload,$validsExtentions)) {
-				echo json_encode(array('errors'=>$file,
+				echo json_encode(array('errors'=>$media,
 					'errorMsg'=>"Extention de fichier invalide"));
 			} else {
 				//gestion de la taille limite des fichier
 				$maxsize=5*8*1000*1000; //5Mo
-				$file_sizes=$file['size'];
-				list($width,$height,$type,$attr)=getimagesize($file['tmp_name']);
-				if ($file_sizes>$maxsize) {
-					echo json_encode(array('errors'=>$file,
+				$media_size=$media['size'];
+				list($width,$height,$type,$attr)=getimagesize($media['tmp_name']);
+				if ($media_size>$maxsize) {
+					echo json_encode(array('errors'=>$media,
 						'errorMsg'=>"Votre fichier est trop volumineux"));
 				} else {
-					//gestion de la sauvegarde dui fichier image dans le dossier img du site
-					$fileName=$file['name'];
-					$destination='./sites/'.$this->siteName.'/img/'.$fileName;
-					$result=move_uploaded_file($file['tmp_name'],$destination);
+					//gestion de la sauvegarde dui fichier image dans le dossier media du site
+					$mediaName=$media['name'];
+					$destination='./sites/'.$this->siteName.'/medias/'.$mediaName;
+					$result=move_uploaded_file($media['tmp_name'],$destination);
 					if (!$result) {
-						echo json_encode(array('errors'=>$file,
+						echo json_encode(array('errors'=>$media,
 							'errorMsg'=>"une erreur s'est produite lors de l'envoi du fichier"));
 					} else {
-						//gestion de l'archivage des infos du fichier dans la table siteFile
+						//gestion de l'archivage des infos du fichier dans la table sitemedia
 						//on recupere la table
-						$siteFiles=$this->db->read('siteFiles.json');
+						$siteMedias=$this->db->read('siteMedias.json');
 						//on formate la nouvelle entrée
 						$toPush=array(
 							'id'=>uniqid(),
 							'type'=>'img',
 							'url'=>$destination,
-							'alt'=>'',
+							'label'=>"",
 							'size'=>($width && $height)?$width."x".$height:""
 						);
 						$alreadyExist = FALSE;
-						foreach($siteFiles as $searched){
+						foreach($siteMedias as $searched){
 							if($searched['url']=== $destination){
-								echo json_encode(array('errors'=>$file,
+								echo json_encode(array('errors'=>$media,
 									'errorMsg'=>"La bibliothèque contient déjà un fichier du meme nom"));
 								$alreadyExist = TRUE;
 							}
 						}
 						//on l'insere au début du tableau
 						if(!$alreadyExist){
-							array_unshift($siteFiles,$toPush);
+							array_unshift($siteMedias,$toPush);
 							//on sauvegarde la nouvelle table
-							$this->db->write('siteFiles.json',$siteFiles);
+							$this->db->write('siteMedias.json',$siteMedias);
 							//et on renvoie les infos de la nouvelle entrée en json pour le script js
 							echo json_encode($toPush);
 						}
@@ -267,21 +268,41 @@ class EditController extends Controller {
 	/****************************************
 	 * Methode en AJAX d'ajout d'une image a la bibliotheque utilisateur
 	 */
-	function deleteImg() {
+	function deleteMedia() {
 		//on viens récuoere les fichier envoyé par l'utilisateur
 		$id=$this->f3->get('GET')['id'];
-		//on récupere la table sitefile
-		$siteFiles=$this->db->read('siteFiles.json');
+		//on récupere la table sitemedia
+		$siteMedias=$this->db->read('siteMedias.json');
 		//on formate la nouvelle entrée
-		foreach ($siteFiles as $key=> $fileInfo){
-			if($fileInfo['id'] === $id){
-				unlink($fileInfo['url']);
-				array_splice($siteFiles, $key,1);
+		foreach ($siteMedias as $key=> $mediaInfo){
+			if($mediaInfo['id'] === $id){
+				unlink($mediaInfo['url']);
+				array_splice($siteMedias, $key,1);
 			}
 		}
 		//on sauvegarde la nouvelle table
-		$this->db->write('siteFiles.json',$siteFiles);
+		$this->db->write('siteMedias.json',$siteMedias);
 		//et on renvoie les infos de la nouvelle entrée en json pour le script js
 		echo json_encode(array('deletedId'=>$id));
+	}
+	/****************************************
+	 * Methode en AJAX d'edition des info associés a un média
+	 */
+	function editMediaInfo() {
+		//on viens récuoere les fichier envoyé par l'utilisateur
+		$id=$this->f3->get('POST')['id'];
+		$label = $this->f3->get('POST')['label'];
+		//on récupere la table sitemedia
+		$siteMedias=$this->db->read('siteMedias.json');
+		//on formate la nouvelle entrée
+		foreach ($siteMedias as $key=> $mediaInfo){
+			if($mediaInfo['id'] === $id){
+				$siteMedias[$key]['label']= $label;
+			}
+		}
+		//on sauvegarde la nouvelle table
+		$this->db->write('siteMedias.json',$siteMedias);
+		//et on renvoie les infos de la nouvelle entrée en json pour le script js
+		echo json_encode(array('id'=>$id, 'label'=>$label));
 	}
 }

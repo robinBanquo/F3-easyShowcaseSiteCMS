@@ -6,6 +6,9 @@
  * Made By MaterializeCSS.com
  */
 
+body, html{
+	overflow-x: hidden;
+}
 nav ul a,
 nav .brand-logo {
 	color: #444;
@@ -226,10 +229,9 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 }
 .blockList{
 	width: 100% !important;
-	padding: 15px;
+
 	height: auto;
 }
-
 .columnContainer{
 	/* Prevent vertical gaps */
 	line-height: 0;
@@ -243,8 +245,9 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 }
 .columnItem{
 	/* Just in case there are inline attributes */
-	width: 100% !important;
+
 	height: auto !important;
+	margin: 20px 10px !important;
 }
 
 @media (max-width: 1400px) {
@@ -268,4 +271,8 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 		-webkit-column-count: 1;
 		column-count:         1;
 	}
+}
+.pickUpImageToUglyForm:hover{
+	border: 4px solid #C48A1B;
+	cursor: pointer !important;
 }

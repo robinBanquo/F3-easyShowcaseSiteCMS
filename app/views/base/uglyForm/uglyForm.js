@@ -1,3 +1,14 @@
+initSaveBtn = function () {
+	//on affiche le bouton sauvegarder en bas a droite
+	let saveBtn = $('#saveBtn')
+	saveBtn.css('visibility', 'visible')
+	saveBtn.click(function () {
+		window.onbeforeunload = function () {}
+		$('#uglyForm').submit()
+
+	});
+}
+
 $(document).ready(function () {
 	//lorsqu'une action viens modifier le formulaire de réference contenant les infos de la page
 	$('#uglyForm input').change(function () {
@@ -12,14 +23,7 @@ $(document).ready(function () {
 			toChange.html(this.value)
 		}
 
-		//on affiche le bouton sauvegarder en bas a droite
-		let saveBtn = $('#saveBtn')
-		saveBtn.css('visibility', 'visible')
-		saveBtn.click(function () {
-			window.onbeforeunload = function () {}
-			$('#uglyForm').submit()
-
-		});
+		initSaveBtn()
 		window.onbeforeunload = function () {
 			let message = "certains changements ne sont pas sauvegardés, cliquer sur le bouton en haut à droite pour les enregistrer"
 

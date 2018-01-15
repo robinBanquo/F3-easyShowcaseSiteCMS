@@ -38,8 +38,17 @@ class ShowCaseController extends Controller {
 		$siteStructure=$this->getSiteStructure();
 		//on la passe dans les variables globales
 		$this->f3->set('siteStructure',$siteStructure);
+
+		//on vient récuperer la structure du site telle qu'elle
+		// 'est initialisé dans le constructeur du controller
+		$siteOptions=$this->getSiteOptions();
+		//on la passe dans les variables globales
+		$this->f3->set('siteOptionsJson',json_encode($siteOptions));
+		$this->f3->set('siteOptions',$siteOptions);
+
 		//et on lance la methode d'import des differents fichier js des modules
 		$this->importJs();
+
 	}
 	//methode d'import des differents fichier js des modules
 	//l'idée est de ne pas importer plusieur fois le meme fichier js
@@ -63,13 +72,19 @@ class ShowCaseController extends Controller {
 	//methode de generation des infos complémentaires nécessaires a la page admin
 	function generateAdminOnlyData() {
 		$this->getModuleList();
-		$this->getFilesList();
+		$this->getMediasList();
+		$this->getThemesList();
 	}
 	//methode permettant de transmettre au script js de gestion de
 	// la bibliotheque d'image le contenu de la table file au format json
-	function getFilesList() {
-		$FilesList=$this->db->read('siteFiles.json');
-		$this->f3->set('filesList',json_encode($FilesList));
+	function getMediasList() {
+		$mediasList=$this->db->read('siteMedias.json');
+		$this->f3->set('mediasList',json_encode($mediasList));
+	}
+
+	function getThemesList(){
+		$themesList = json_decode(file_get_contents(__DIR__.'/../config/themes.json'),TRUE);
+		$this->f3->set('themesList',json_encode($themesList));
 	}
 
 }

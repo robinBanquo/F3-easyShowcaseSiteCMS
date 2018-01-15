@@ -1,6 +1,7 @@
 $(document).ready(function () {
 //pour l'édition du menu
 	$('.editMenuLabel').click(function () {
+		console.log('coucou')
 		//on récupere toutes les infos stockées dans l'id du boutton
 		let splittedId = this.id.split("-")
 		//et on remplit le formulaire caché avec

@@ -1,14 +1,14 @@
 <div class="parallax-container valign-wrapper module paralax" >
 	<div class="section no-pad-bot relative">
 		<check if="{{ @isAdminPage }}">
-			<a class="btn-floating waves-effect waves-light edit-btn relative tooltipped moduleBtn editParalaxImage" data-position="right"
-			   data-delay="250" data-tooltip="modifier l'image" id="editParalaxImage-{{@id}}" style=" left: 60px; top: -50px; z-index: 1000">
+			<a class="btn-floating waves-effect waves-light lightButton relative tooltipped moduleBtn editParalaxImage" data-position="right"
+			   data-delay="250" data-tooltip="modifier l'image" id="editParalaxImage-{{@id}}" style=" left: 30px; top: -100px; z-index: 1000">
 				<i class="material-icons">image</i></a>
 		</check>
 
 		<div class="container">
 			<div class="row center">
-				<h5 class="header col s12 light" id="moduleValue-text">{{@fields['text']['value']}}</h5>
+				<h5 class="header col s12 light contrasted-color" id="moduleValue-text">{{@fields['text']['value']}}</h5>
 			</div>
 		</div>
 	</div>

@@ -1,10 +1,15 @@
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="/public/js/materialize.js"></script>
-<script src="/public/js/adminEditScripts.js"></script>
+
+<script>
+	var SiteOptions = JSON.parse('{{@siteOptions |raw}}')
+</script>
+
 <script src="/public/js/init.js"></script>
 <script src="/app/views/base/nav/nav.js"></script>
 <script src="/app/views/base/footer/footer.js" ></script>
+<script src="/public/js/adminEditScripts.js"></script>
 
 
 <repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
@@ -13,7 +18,8 @@
 <check if="{{ @isAdminPage }}">
 	<script src="/app/views/base/editBtns/editBtns.js" ></script>
 	<script src="/app/views/base/generalModuleOptions/generalModuleOptions.js" ></script>
-	<script src="/app/views/base/siteOptionsModal/imageManagment/imageManagment.js" ></script>
+	<script src="/app/views/base/siteOptionsModal/mediaManagment/mediaManagment.js" ></script>
+	<script src="/app/views/base/siteOptionsModal/themesManagment/themesManagment.js" ></script>
 	<script src="/app/views/base/siteOptionsModal/siteOptionsModal.js" ></script>
 	<script src="/app/views/base/uglyForm/uglyForm.js" ></script>
 	<repeat group="{{ @jsSectionArray }}" value="{{ @module }}">

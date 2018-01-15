@@ -1,0 +1,35 @@
+
+  {
+    "Classic": {
+      "name" : "Classic",
+      "main_background": "#FFFFFF",
+      "main_color": "#444444",
+      "contrasted_color":"#FFFFFF",
+      "second_background": "#009688",
+      "second_color": "#795548"
+    },
+    "Darkly": {
+      "name" : "Darkly",
+      "main_background": "#141414",
+      "main_color": "#D3D3D3",
+      "contrasted_color":"#FFB300",
+      "second_background": "#FB8C00",
+      "second_color": "#FFB300"
+    },
+    "Soft": {
+      "name" : "Soft",
+      "main_background": "#F6F6F6",
+      "main_color": "#8F8F8F",
+      "contrasted_color":"#F6F6F6",
+      "second_background": "#96C7A2",
+      "second_color": "#85C3AF"
+    },
+    "Pinky": {
+      "name" : "Pinky",
+      "main_background": "#F9F0F2",
+      "main_color": "#1C2228",
+      "contrasted_color":"#FF4081",
+      "second_background": "#1C2228",
+      "second_color": "#FF4081"
+    }
+  }

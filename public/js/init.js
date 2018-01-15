@@ -1,21 +1,44 @@
 (function ($) {
 	$(function () {
-
 		$('.button-collapse').sideNav();
 		$('.parallax').parallax();
 
 		//effet smoothscroll
 		$('#mainNav a[href^="#"]').click(function () {
-			var the_id = $(this).attr("href");
-			if (the_id === '#') {
+			let the_id = $(this).attr("href");
+			if (the_id === '#' || the_id === '#!') {
 				return;
 			}
-
 			$('html, body').animate({
 				scrollTop: $(the_id).offset().top
 			});
 			return false;
 		});
 
+
+
 	}); // end of document ready
 })(jQuery); // end of jQuery name space
+
+$(document).ready(function () {
+
+	applyTheme = function (theme) {
+		for(let identifier in theme){
+			let elements =$('.'.identifier)
+			console.log(elements.css('background-color'))
+			switch(identifier.split('-')[1]){
+				case 'background':
+					elements.css('background-color', theme[identifier] +' !important')
+					console.log(elements.css('background-color'))
+					break
+				case 'color':
+					elements.css('color', theme[identifier]+' !important')
+					break
+				default:
+					console.log("erreur avec le thème")
+			}
+
+		}
+	}
+
+})

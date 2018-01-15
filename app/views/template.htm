@@ -5,7 +5,6 @@
 {* ajout des boutons supérieurs si l'utilisateur est connecté en tant qu'admin*}
 <include if="{{ @isAdmin }}" href="./base/includes/adminButtons.htm"/>
 
-
 <include href="./base/nav/nav.htm"/>
 
 <repeat group="{{ @siteStructure }}" key="{{ @position }}" value="{{ @section}}">

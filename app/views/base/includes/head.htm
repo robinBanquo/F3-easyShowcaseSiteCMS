@@ -10,4 +10,22 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="/public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="/public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+	<style type="text/css">
+		.main-background {
+		background-color: {{@siteOptions['theme']['main_background']}} !important;
+		}
+		.main-color, .main-color * {
+		color: {{@siteOptions['theme']['main_color']}} !important;
+		}
+		.contrasted-color, .contrasted-color * {
+		color: {{@siteOptions['theme']['contrasted_color']}} !important;
+		}
+		.second-background {
+		background-color: {{@siteOptions['theme']['second_background']}} !important;
+		}
+		.second-color, .second-color * {
+		color: {{@siteOptions['theme']['second_color']}} !important;
+		}
+	</style>
 </head>
