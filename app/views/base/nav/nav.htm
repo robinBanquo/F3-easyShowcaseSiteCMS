@@ -1,10 +1,10 @@
-<nav class="nav main-background" id="mainNav" role="navigation">
+<nav class="nav menu-background" id="mainNav" role="navigation">
 	<div class=" nav-wrapper container">
-		<a id="logo-container" href="#" class="brand-logo main-color">{{@siteName}}</a>
+		<a id="logo-container" href="#" class="brand-logo second-color">{{@siteName}}</a>
 		<ul class="right hide-on-med-and-down">
 			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
 				<check if="{{ @section['inMenuAs'] }}">
-					<li class="relative main-color"><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a>
+					<li class="relative second-color"><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a>
 					<check if="{{ @isAdmin && @isAdminPage }}">
 						<a  href="#!" class="btn-floating waves-effect waves-light frama-orange hover-frama-purple absolute tooltipped show-on-li-hover editMenuLabel"   data-position="bottom"
 							data-delay="350" data-tooltip="Modifier" style="bottom: -20px; left: -20px" id="editMenuLabel-{{@section['id']}}-{{@section['inMenuAs']}}"><i class="material-icons">edit</i></a>

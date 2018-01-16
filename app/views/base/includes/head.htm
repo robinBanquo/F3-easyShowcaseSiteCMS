@@ -11,7 +11,10 @@
 	<link href="/public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="/public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-	<style type="text/css">
+	<style type="text/css" id="themeClassCSS">
+		.menu-background {
+		background-color: {{@siteOptions['theme']['menu_background']}} !important;
+		}
 		.main-background {
 		background-color: {{@siteOptions['theme']['main_background']}} !important;
 		}
@@ -28,4 +31,5 @@
 		color: {{@siteOptions['theme']['second_color']}} !important;
 		}
 	</style>
+
 </head>

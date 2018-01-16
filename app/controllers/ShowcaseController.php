@@ -42,13 +42,12 @@ class ShowCaseController extends Controller {
 		//on vient récuperer la structure du site telle qu'elle
 		// 'est initialisé dans le constructeur du controller
 		$siteOptions=$this->getSiteOptions();
-		//on la passe dans les variables globales
+		//on la passe dans les variables globales en version json et en version normale
 		$this->f3->set('siteOptionsJson',json_encode($siteOptions));
 		$this->f3->set('siteOptions',$siteOptions);
 
 		//et on lance la methode d'import des differents fichier js des modules
 		$this->importJs();
-
 	}
 	//methode d'import des differents fichier js des modules
 	//l'idée est de ne pas importer plusieur fois le meme fichier js

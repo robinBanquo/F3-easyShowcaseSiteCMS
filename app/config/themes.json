@@ -1,35 +1,92 @@
-
-  {
-    "Classic": {
-      "name" : "Classic",
-      "main_background": "#FFFFFF",
-      "main_color": "#444444",
-      "contrasted_color":"#FFFFFF",
-      "second_background": "#009688",
-      "second_color": "#795548"
-    },
-    "Darkly": {
-      "name" : "Darkly",
-      "main_background": "#141414",
-      "main_color": "#D3D3D3",
-      "contrasted_color":"#FFB300",
-      "second_background": "#FB8C00",
-      "second_color": "#FFB300"
-    },
-    "Soft": {
-      "name" : "Soft",
-      "main_background": "#F6F6F6",
-      "main_color": "#8F8F8F",
-      "contrasted_color":"#F6F6F6",
-      "second_background": "#96C7A2",
-      "second_color": "#85C3AF"
-    },
-    "Pinky": {
-      "name" : "Pinky",
-      "main_background": "#F9F0F2",
-      "main_color": "#1C2228",
-      "contrasted_color":"#FF4081",
-      "second_background": "#1C2228",
-      "second_color": "#FF4081"
-    }
+{
+  "Classic": {
+    "name": "Classic",
+    "menu_background": "#FFFFFF",
+    "main_background": "#FFFFFF",
+    "main_color": "#444444",
+    "contrasted_color": "#FFFFFF",
+    "second_background": "#009688",
+    "second_color": "#795548"
+  },
+  "Darkly": {
+    "name": "Darkly",
+    "menu_background": "#141414",
+    "main_background": "#141414",
+    "main_color": "#fce260",
+    "contrasted_color": "#785400",
+    "second_background": "#1c180b",
+    "second_color": "#ffd700"
+  },
+  "Soft": {
+    "name": "Soft",
+    "menu_background": "#96adc7",
+    "main_background": "#f6f6f6",
+    "main_color": "#6e6e6e",
+    "contrasted_color": "#f6f6f6",
+    "second_background": "#96a9c7",
+    "second_color": "#596783"
+  },
+  "Pinky": {
+    "name": "Pinky",
+    "menu_background": "#F9F0F2",
+    "main_background": "#F9F0F2",
+    "main_color": "#1C2228",
+    "contrasted_color": "#FF4081",
+    "second_background": "#1C2228",
+    "second_color": "#FF4081"
+  },
+  "Frama": {
+    "name": "Frama",
+    "menu_background": "#FFFFFF",
+    "main_background": "#FFFFFF",
+    "main_color": "#616161",
+    "contrasted_color": "#EB7239",
+    "second_background": "#C48A1B",
+    "second_color": "#6A5687"
+  },
+  "Deep Blue": {
+      "name": "Deep Blue",
+      "menu_background": "#000515",
+      "main_background": "#07143c",
+      "main_color": "#ed9e3f",
+      "contrasted_color": "#dadfe8",
+      "second_background": "#000515",
+      "second_color": "#3c529f"
+  },
+  "Green Wash": {
+    "name": "Green Wash",
+    "menu_background": "#dabe27",
+    "main_background": "#b3e27a",
+    "main_color": "#062e00",
+    "contrasted_color": "#b3e27a",
+    "second_background": "#51c71c",
+    "second_color": "#977700"
+  },
+  "Grav": {
+    "name": "Grav",
+    "menu_background": "#96C7A2",
+    "main_background": "#FFFFFF",
+    "main_color": "#2A3A42",
+    "contrasted_color": "#FFFFFF",
+    "second_background": "#96C7A2",
+    "second_color": "#458B77"
+  },
+  "Electric": {
+    "name": "Electric",
+    "menu_background": "#141414",
+    "main_background": "#1d1d1d",
+    "main_color": "#5753a8",
+    "contrasted_color": "#ffffff",
+    "second_background": "#111111",
+    "second_color": "#0300ff"
+  },
+  "Aphrodite": {
+    "name": "Aphrodite",
+    "menu_background": "#141414",
+    "main_background": "#1d1d1d",
+    "main_color": "#5753a8",
+    "contrasted_color": "#ffffff",
+    "second_background": "#111111",
+    "second_color": "#0300ff"
   }
+}

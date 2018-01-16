@@ -61,7 +61,11 @@ p {
 footer.page-footer {
 	margin: 0;
 }
-
+.borderInBox {
+	-webkit-box-shadow:inset 0px 0px 0px 6px #C48A1B;
+	-moz-box-shadow:inset 0px 0px 0px 6px #C48A1B;
+	box-shadow:inset 0px 0px 0px 6px #C48A1B;
+}
 /*******************************
 		COLORS
  */
@@ -72,7 +76,6 @@ footer.page-footer {
 .frama-purple-text {
 	color: #635182 !important;
 }
-
 .frama-orange {
 	background-color: #C48A1B !important;
 }

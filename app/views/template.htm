@@ -13,9 +13,6 @@
 		<include href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}},fields={{@section[fields]}}"/>
 		<include if="{{ @isAdminPage && @position === count(@siteStructure)-1 }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
 	<include if="{{ @isAdminPage }}" href="./base/generalModuleOptions/generalModuleOptions.htm" with="id={{@section[id]}}" />
-		<check if="{{ @isAdminPage }}">
-		<hr class="" style="width: 100%; border-bottom: #d6d6d6; margin: 0">
-		</check>
 	</section>
 </repeat>
 

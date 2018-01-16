@@ -30,9 +30,10 @@ class EditController extends Controller {
 		$siteStructure=$this->getSiteStructure();
 		//on cree un array pour acceuillir la nouvelle structure
 		$newSiteStructure=array();
-		$fixtures = new Fixtures();
+		$fixtures=new Fixtures();
 		//on vient créer un id pour cette section et lui donner aussi son module appelé
-		$newSection=array('id'=>uniqid(),'module'=>$module, "fields"=> $fixtures->getModuleInitValues($module));
+		$newSection=array('id'=>uniqid(),'module'=>$module,
+			"fields"=>$fixtures->getModuleInitValues($module));
 		//pour chaque element de l'anciene structure
 		foreach ($siteStructure as $i=>$section) {
 			//si on est sur la section réference pour l'ajout
@@ -242,23 +243,22 @@ class EditController extends Controller {
 							'label'=>"",
 							'size'=>($width && $height)?$width."x".$height:""
 						);
-						$alreadyExist = FALSE;
-						foreach($siteMedias as $searched){
-							if($searched['url']=== $destination){
+						$alreadyExist=FALSE;
+						foreach ($siteMedias as $searched) {
+							if ($searched['url']===$destination) {
 								echo json_encode(array('errors'=>$media,
 									'errorMsg'=>"La bibliothèque contient déjà un fichier du meme nom"));
-								$alreadyExist = TRUE;
+								$alreadyExist=TRUE;
 							}
 						}
 						//on l'insere au début du tableau
-						if(!$alreadyExist){
+						if (!$alreadyExist) {
 							array_unshift($siteMedias,$toPush);
 							//on sauvegarde la nouvelle table
 							$this->db->write('siteMedias.json',$siteMedias);
 							//et on renvoie les infos de la nouvelle entrée en json pour le script js
 							echo json_encode($toPush);
 						}
-
 					}
 				}
 			}
@@ -270,14 +270,14 @@ class EditController extends Controller {
 	 */
 	function deleteMedia() {
 		//on viens récuoere les fichier envoyé par l'utilisateur
-		$id=$this->f3->get('GET')['id'];
+		$id=$this->getSafeGET('id');
 		//on récupere la table sitemedia
 		$siteMedias=$this->db->read('siteMedias.json');
 		//on formate la nouvelle entrée
-		foreach ($siteMedias as $key=> $mediaInfo){
-			if($mediaInfo['id'] === $id){
+		foreach ($siteMedias as $key=>$mediaInfo) {
+			if ($mediaInfo['id']===$id) {
 				unlink($mediaInfo['url']);
-				array_splice($siteMedias, $key,1);
+				array_splice($siteMedias,$key,1);
 			}
 		}
 		//on sauvegarde la nouvelle table
@@ -285,24 +285,42 @@ class EditController extends Controller {
 		//et on renvoie les infos de la nouvelle entrée en json pour le script js
 		echo json_encode(array('deletedId'=>$id));
 	}
+
 	/****************************************
 	 * Methode en AJAX d'edition des info associés a un média
 	 */
 	function editMediaInfo() {
 		//on viens récuoere les fichier envoyé par l'utilisateur
-		$id=$this->f3->get('POST')['id'];
-		$label = $this->f3->get('POST')['label'];
+		$id=$this->getSafePOST('id');
+		$label=$this->getSafePOST('label');
 		//on récupere la table sitemedia
 		$siteMedias=$this->db->read('siteMedias.json');
 		//on formate la nouvelle entrée
-		foreach ($siteMedias as $key=> $mediaInfo){
-			if($mediaInfo['id'] === $id){
-				$siteMedias[$key]['label']= $label;
+		foreach ($siteMedias as $key=>$mediaInfo) {
+			if ($mediaInfo['id']===$id) {
+				$siteMedias[$key]['label']=$label;
 			}
 		}
 		//on sauvegarde la nouvelle table
 		$this->db->write('siteMedias.json',$siteMedias);
 		//et on renvoie les infos de la nouvelle entrée en json pour le script js
-		echo json_encode(array('id'=>$id, 'label'=>$label));
+		echo json_encode(array('id'=>$id,'label'=>$label));
+	}
+
+	function editTheme() {
+		$theme=array(
+			"name"=>$this->getSafePOST('name'),
+			"menu_background"=>$this->getSafePOST('menu_background'),
+			"main_background"=>$this->getSafePOST('main_background'),
+			"main_color"=>$this->getSafePOST('main_color'),
+			"contrasted_color"=>$this->getSafePOST('contrasted_color'),
+			"second_background"=>$this->getSafePOST('second_background'),
+			"second_color"=>$this->getSafePOST('second_color')
+		);
+		$siteOptions=$this->db->read('siteOptions.json');
+		$siteOptions['theme'] = $theme;
+		$this->db->write('siteOptions.json',$siteOptions);
+		echo json_encode(array('result'=>'success'));
+
 	}
 }

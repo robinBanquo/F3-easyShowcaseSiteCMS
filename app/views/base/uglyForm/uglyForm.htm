@@ -1,4 +1,4 @@
-<form method="POST" action="/admin/edit/save-modifs" class="" id="uglyForm">
+<form method="POST" action="/admin/edit/save-modifs" class="displaynone" id="uglyForm">
 	<repeat group="{{ @siteStructure }}" value="{{ @section }}">
 		<repeat group="{{ @section[fields] }}" key=" {{@fieldName}}" value="{{ @field }}">
 			<input name="{{'uglyForm-'.@section[id] . '-' .@fieldName}}" type="{{@field[type]}}" value="{{@field[value]}}">

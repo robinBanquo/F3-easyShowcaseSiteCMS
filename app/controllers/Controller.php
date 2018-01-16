@@ -139,4 +139,10 @@ class Controller {
 			echo $template->render('login.htm');
 		}
 	}
+	function getSafeGET($name){
+		return htmlentities($this->f3->get('GET')[$name]);
+	}
+	function getSafePOST($name){
+		return htmlentities($this->f3->get('POST')[$name]);
+	}
 }
