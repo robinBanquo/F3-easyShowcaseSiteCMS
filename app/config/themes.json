@@ -10,12 +10,21 @@
   },
   "Darkly": {
     "name": "Darkly",
-    "menu_background": "#141414",
+    "menu_background": "#2d1f11",
     "main_background": "#141414",
-    "main_color": "#fce260",
-    "contrasted_color": "#785400",
+    "main_color": "#be8548",
+    "contrasted_color": "#ffc77b",
     "second_background": "#1c180b",
-    "second_color": "#ffd700"
+    "second_color": "#ff900d"
+  },
+  "Matrix": {
+    "name": "Matrix",
+    "menu_background": "#2d1f11",
+    "main_background": "#141414",
+    "main_color": "#be8548",
+    "contrasted_color": "#ffc77b",
+    "second_background": "#1c180b",
+    "second_color": "#ff900d"
   },
   "Soft": {
     "name": "Soft",
@@ -37,7 +46,7 @@
   },
   "Frama": {
     "name": "Frama",
-    "menu_background": "#FFFFFF",
+    "menu_background": "#eeeeee",
     "main_background": "#FFFFFF",
     "main_color": "#616161",
     "contrasted_color": "#EB7239",
@@ -45,13 +54,13 @@
     "second_color": "#6A5687"
   },
   "Deep Blue": {
-      "name": "Deep Blue",
-      "menu_background": "#000515",
-      "main_background": "#07143c",
-      "main_color": "#ed9e3f",
-      "contrasted_color": "#dadfe8",
-      "second_background": "#000515",
-      "second_color": "#3c529f"
+    "name": "Deep Blue",
+    "menu_background": "#000515",
+    "main_background": "#07143c",
+    "main_color": "#ed9e3f",
+    "contrasted_color": "#dadfe8",
+    "second_background": "#000515",
+    "second_color": "#3c529f"
   },
   "Green Wash": {
     "name": "Green Wash",
@@ -64,7 +73,7 @@
   },
   "Grav": {
     "name": "Grav",
-    "menu_background": "#96C7A2",
+    "menu_background": "#3b3b3b",
     "main_background": "#FFFFFF",
     "main_color": "#2A3A42",
     "contrasted_color": "#FFFFFF",
@@ -82,11 +91,11 @@
   },
   "Aphrodite": {
     "name": "Aphrodite",
-    "menu_background": "#141414",
-    "main_background": "#1d1d1d",
-    "main_color": "#5753a8",
-    "contrasted_color": "#ffffff",
-    "second_background": "#111111",
-    "second_color": "#0300ff"
+    "menu_background": "#410000",
+    "main_background": "#1f1717",
+    "main_color": "#edd17c",
+    "contrasted_color": "#f6bf86",
+    "second_background": "#1f1717",
+    "second_color": "#ffa203"
   }
 }

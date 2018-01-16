@@ -35,7 +35,7 @@ class Fixtures {
 	function siteOptions() {
 		$themesList = json_decode(file_get_contents(__DIR__.'/../config/themes.json'),TRUE);
 		return [
-			"theme"=>$themesList["Pinky"]
+			"theme"=>$themesList["Classic"]
 		];
 	}
 	function getModuleInitValues($module){

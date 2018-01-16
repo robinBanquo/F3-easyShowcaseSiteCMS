@@ -307,7 +307,11 @@ class EditController extends Controller {
 		echo json_encode(array('id'=>$id,'label'=>$label));
 	}
 
+	/***************************
+	 * Methode d'edition du the de couleurs du site
+	 */
 	function editTheme() {
+		//on viens récuperer les données en faisant un htmlentities dessus pour la sécu vu qu'elles seront ensuite affichées sans filtre
 		$theme=array(
 			"name"=>$this->getSafePOST('name'),
 			"menu_background"=>$this->getSafePOST('menu_background'),
@@ -317,6 +321,7 @@ class EditController extends Controller {
 			"second_background"=>$this->getSafePOST('second_background'),
 			"second_color"=>$this->getSafePOST('second_color')
 		);
+		//puis on les sauvegarde dans les options de l'utilisateur
 		$siteOptions=$this->db->read('siteOptions.json');
 		$siteOptions['theme'] = $theme;
 		$this->db->write('siteOptions.json',$siteOptions);
