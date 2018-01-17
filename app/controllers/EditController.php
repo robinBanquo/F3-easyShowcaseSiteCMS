@@ -329,7 +329,7 @@ class EditController extends Controller {
 
 	}
 	/***************************
-	 * Methode d'edition du the de couleurs du site
+	 * Methode d'edition des jeux de polices du site
 	 */
 	function editFont() {
 		//on viens récuperer les données en faisant un htmlentities dessus pour la sécu vu qu'elles seront ensuite affichées sans filtre

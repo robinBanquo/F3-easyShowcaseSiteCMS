@@ -1,5 +1,6 @@
 /***********************************************
  * Fonctions gérant l'editeur wisiwig du site
+ * documentation de l'éditeur ici : https://github.com/yabwe/medium-editor/blob/master/API.md
  * @type {{fullEditableEditor: {}, restrictedEditableEditor: {}, MediumEditor(*=, *=): *, fullEditableOptions: {disableExtraSpace: boolean, disableDoubleReturn: boolean, placeholder: {text: string}, imageDragging: boolean, autoLink: boolean, toolbar: {allowMultiParagraphSelection: boolean, buttons: string[], diffLeft: number, diffTop: number, firstButtonClass: string, lastButtonClass: string, standardizeSelectionStart: boolean, align: string, sticky: boolean, updateOnEmptySelection: boolean}}, restrictedEditableOptions: {disableExtraSpace: boolean, disableDoubleReturn: boolean, placeholder: {text: string}, imageDragging: boolean, autoLink: boolean, toolbar: {allowMultiParagraphSelection: boolean, buttons: string[], diffLeft: number, diffTop: number, firstButtonClass: string, lastButtonClass: string, standardizeSelectionStart: boolean, align: string, sticky: boolean, updateOnEmptySelection: boolean}}, startUp(): void}}
  */
 
@@ -9,6 +10,8 @@ var Editable = {
 	MediumEditor(el) {
 		return new MediumEditor(el, this.EditableOptions)
 	},
+	//documentation des options de configuration de l'editeur ici :
+	// https://github.com/yabwe/medium-editor/blob/master/OPTIONS.md
 	EditableOptions: {
 		disableExtraSpace: true,
 		disableDoubleReturn: true,
@@ -37,30 +40,49 @@ var Editable = {
 
 		}
 	},
-	editBtn(id){return `<div class="relative "> <a class="btn-floating waves-effect waves-light lightButton absolute tooltipped moduleBtn editableTextBtn" data-position="left"
-			   data-delay="250" data-tooltip="Editer" id="`+ id +`" style=" right: -15px; top: -15px; z-index: 1000">
-<i class="material-icons">edit</i></a></div>`},
-	launchEditor(selector){
-			this.EditableEditor = this.MediumEditor($(selector))
+	editBtn(id){
+		return `<div class="relative ">
+					<a class="btn-floating waves-effect waves-light lightButton absolute tooltipped moduleBtn editableTextBtn" data-position="left"
+						data-delay="250" data-tooltip="Editer" id="`+ id +`" style=" right: -15px; top: -15px; z-index: 1000">
+						<i class="material-icons">edit</i>
+					</a>
+				</div>`
+	},
+	onFocusOut(event,selector,editableId){
+		$(selector).before(this.editBtn("editable~"+editableId));
+		setTimeout(()=>{
+			this.initEditBtn()
+		},300)
 
+	},
+	initEditBtn(){
+		let that = this
+		$('.editableTextBtn').click(function () {
+			let targetId = this.id.split("~")[1]
+			let currentModuleId = $(this).closest("section").attr('id')
+			let $target = $("#"+currentModuleId+ " #"+targetId)
+			$target.focus()
+			$target.focusout(function () {
+
+				that.onFocusOut(this, $target, targetId)
+			})
+			$('.tooltipped').tooltip('remove');
+			$(this).parent().remove()
+			$
+			setTimeout(()=>{
+
+				$('.tooltipped').tooltip({delay: 50})
+			},300)
+		})
 	},
 	startUp(){
 		let that = this
 		$('.editable').each(function(index, el){
 			$(el).before(that.editBtn("editable~"+this.id));
 		})
+		this.EditableEditor = this.MediumEditor('.editable')
 		setTimeout(()=>{
-			$('.editableTextBtn').click(function () {
-				let target = this.id.split("~")[1]
-				let currentModuleId = $(this).closest("section").attr('id')
-
-				that.launchEditor("#"+currentModuleId+ " #"+target)
-				$('.tooltipped').tooltip('remove');
-				$(this).parent().remove()
-				setTimeout(()=>{
-					$('.tooltipped').tooltip({delay: 50})
-				},300)
-			})
+		this.initEditBtn()
 		},300)
 	}
 }
