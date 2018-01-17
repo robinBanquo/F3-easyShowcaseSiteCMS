@@ -78,13 +78,20 @@ var ThemeManagment = {
 	render() {
 		let htmlToInclude = ""
 		//si l'utilisateur utilise un theme "custom", on l'ajoute a la liste
-		if (this.userTheme.name === "Custom" && !themesList['Custom']) {
+		if (this.themesList['Custom'] && !(this.userTheme.name === 'Custom')) {
+			htmlToInclude += this.renderPreview(this.themesList['Custom'], true)
+		}
+		if (this.userTheme.name === 'Custom') {
 			htmlToInclude += this.renderPreview(this.userTheme, true)
 		}
+
 		//on boucle sur les themes pour ajouter leurs templates
 		for (let theme in themesList) {
-			let t = themesList[theme];
-			htmlToInclude += this.renderPreview(t, true)
+			if(theme !== "Custom"){
+				let t = themesList[theme];
+				htmlToInclude += this.renderPreview(t, true)
+			}
+
 		}
 		htmlToInclude += this.useCustomColorBtn
 		setTimeout(() => {
@@ -210,7 +217,6 @@ htmlToInclude += `			</div>
 			for (let item in that.userTheme) {
 				customTheme[item] = $('#customColorThemeForm input[name=' + item + ']').val();
 			}
-			that.userTheme = customTheme
 			//et on fait la requete ajax
 			that.sendAjaxRequest(customTheme)
 		})
@@ -237,12 +243,15 @@ htmlToInclude += `			</div>
 			data: data, //
 			dataType: 'json',
 			success(msg) {
+				console.log()
 				if (msg.result === "success") {//si ca marche
+					that.userTheme = theme
 					//on applique le theme
 					that.applyTheme(that.userTheme)
 					//et on re-rends le template
 					that.render()
 					$('.tooltipped').tooltip({delay: 50});
+
 				} else {
 					console.log(msg)
 					Materialize.toast("Une erreur s'est produite", 4000, 'red')

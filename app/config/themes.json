@@ -10,21 +10,21 @@
   },
   "Darkly": {
     "name": "Darkly",
-    "menu_background": "#2d1f11",
-    "main_background": "#141414",
-    "main_color": "#be8548",
-    "contrasted_color": "#ffc77b",
-    "second_background": "#1c180b",
+    "menu_background": "#131313",
+    "main_background": "#232323",
+    "main_color": "#d9c4ae",
+    "contrasted_color": "#ff9300",
+    "second_background": "#131313",
     "second_color": "#ff900d"
   },
   "Matrix": {
     "name": "Matrix",
-    "menu_background": "#2d1f11",
-    "main_background": "#141414",
-    "main_color": "#be8548",
-    "contrasted_color": "#ffc77b",
-    "second_background": "#1c180b",
-    "second_color": "#ff900d"
+    "menu_background": "#1b1918",
+    "main_background": "#2a2a2a",
+    "main_color": "#189001",
+    "contrasted_color": "#ffd000",
+    "second_background": "#2a251f",
+    "second_color": "#43c816"
   },
   "Soft": {
     "name": "Soft",
@@ -97,5 +97,14 @@
     "contrasted_color": "#f6bf86",
     "second_background": "#1f1717",
     "second_color": "#ffa203"
+  },
+  "Tasty": {
+    "name": "Tasty",
+    "menu_background": "#a46213",
+    "main_background": "#f3eadc",
+    "main_color": "#4f3114",
+    "contrasted_color": "#242424",
+    "second_background": "#8a5728",
+    "second_color": "#ff8a00"
   }
 }
