@@ -17,6 +17,8 @@
 	<script src="{{'/app/views/modules/'.@module.'/show.js'}}"></script>
 </repeat>
 <check if="{{ @isAdminPage }}">
+	<script src="/public/js/medium-editor.min.js"></script>
+	<script src="/public/js/Editable.js"></script>
 	<script src="/app/views/base/editBtns/editBtns.js" ></script>
 	<script src="/app/views/base/generalModuleOptions/generalModuleOptions.js" ></script>
 	<script src="/app/views/base/siteOptionsModal/mediaManagment/mediaManagment.js" ></script>

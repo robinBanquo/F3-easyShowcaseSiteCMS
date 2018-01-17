@@ -10,7 +10,10 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="/public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="/public/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
+<check if="{{ @isAdminPage }}">
+	<link rel="stylesheet" href="/public/css/medium-editor.min.css">
+	<link rel="stylesheet" href="/public/css/beagle.css">
+</check>
 	<style type="text/css" id="themeClassCSS">
 		.menu-background {
 		background-color: {{@siteOptions['theme']['menu_background']}} !important;
@@ -35,11 +38,11 @@
 	<link href="{{@siteOptions['font']['title']['cdn']}}" rel="stylesheet">
 	<link href="{{@siteOptions['font']['main']['cdn']}}" rel="stylesheet">
 	<style type="text/css" id="fontClassCSS">
-		.title-font,.title-font *  {
+		.title-font, .title-font *  {
 		font-family: {{"'" . @siteOptions['font']['title']['css1']."'"}},{{"'".@siteOptions['font']['title']['css2'] ."'"}} ;
 		font-size: 200% !important;
 		}
-		.main-font ,.main-font * {
+		.main-font , .main-font * {
 		font-family: {{"'" . @siteOptions['font']['main']['css1']."'"}},{{"'".@siteOptions['font']['main']['css2'] ."'"}} ;
 		font-stretch: ultra-expanded !imprtant;
 		}

@@ -30,18 +30,93 @@
     }
   },
   {
-    "name": "Hipster",
+    "name": "handy",
     "title": {
-      "name": "Animatic SC",
-      "cdn": "https://fonts.googleapis.com/css?family=Amatic+SC",
-      "css1": "Amatic SC",
+      "name": "Walter Turncoat",
+      "cdn": "https://fonts.googleapis.com/css?family=Walter+Turncoat",
+      "css1": "Walter Turncoat",
       "css2": "cursive"
     },
     "main": {
-      "name": "Open Sans Condensed",
-      "cdn": "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300",
-      "css1": "Open Sans Condensed",
+      "name": "Delius Swash Caps",
+      "cdn": "https://fonts.googleapis.com/css?family=Delius+Swash+Caps",
+      "css1": "Delius Swash Caps",
+      "css2": "cursive"
+    }
+  },
+  {
+    "name": "Pro",
+    "title": {
+      "name": "Maven Pro",
+      "cdn": "https://fonts.googleapis.com/css?family=Maven+Pro",
+      "css1": "Maven Pro",
       "css2": "sans-serif"
+    },
+    "main": {
+      "name": "Maven Pro",
+      "cdn": "https://fonts.googleapis.com/css?family=Maven+Pro",
+      "css1": "Maven Pro",
+      "css2": "sans-serif"
+    }
+  },
+  {
+    "name": "Nerd",
+    "title": {
+      "name": "Maven Pro",
+      "cdn": "https://fonts.googleapis.com/css?family=Cabin+Sketch",
+      "css1": "Cabin Sketch",
+      "css2": "cursive"
+    },
+    "main": {
+      "name": "Maven Pro",
+      "cdn": "https://fonts.googleapis.com/css?family=Fira+Mono",
+      "css1": "Fira Mono",
+      "css2": "monospace"
+    }
+  },
+  {
+    "name": "Soft",
+    "title": {
+      "name": "Poiret One",
+      "cdn": "https://fonts.googleapis.com/css?family=Poiret+One",
+      "css1": "Poiret One",
+      "css2": "cursive"
+    },
+    "main": {
+      "name": "Roboto",
+      "cdn": "https://fonts.googleapis.com/css?family=Roboto",
+      "css1": "Roboto",
+      "css2": "sans-serif"
+    }
+  },
+  {
+    "name": "Tea Times",
+    "title": {
+      "name": "Spectral SC",
+      "cdn": "https://fonts.googleapis.com/css?family=Spectral+SC",
+      "css1": "Spectral SC",
+      "css2": "serif"
+    },
+    "main": {
+      "name": "Crimson Text",
+      "cdn": "https://fonts.googleapis.com/css?family=Crimson+Text",
+      "css1": "Crimson Text",
+      "css2": "serif"
+    }
+  },
+  {
+    "name": "Bungee",
+    "title": {
+      "name": "Bungee Inline",
+      "cdn": "https://fonts.googleapis.com/css?family=Bungee+Inline",
+      "css1": "Bungee Inline",
+      "css2": "cursive"
+    },
+    "main": {
+      "name": "Offside",
+      "cdn": "https://fonts.googleapis.com/css?family=Offside",
+      "css1": "Offside",
+      "css2": "cursive"
     }
   }
 ]

@@ -4,7 +4,7 @@ var FontsManagment = {
 	fontsList: fontsList,
 	//theme actuel de l'utilisateur
 	userFont: SiteOptions.font,
-	//methode de rendu de la preview d'un theme, en fonction de si on est en mode previewet de si on doit afficher le selecteur
+	//methode de rendu de la preview d'un jeu de police
 	renderPreview(f) {
 		let htmlToInclude = ""
 		htmlToInclude += `
@@ -50,6 +50,7 @@ var FontsManagment = {
 			`;
 		return htmlToInclude
 	},
+	//methode permettant de venir recuperer toutes les fonts utilisées via cdn
 	importFonts() {
 		let toImport = []
 		this.fontsList.forEach((font) => {
@@ -73,7 +74,7 @@ var FontsManagment = {
 			this.importFonts()
 		}
 		let htmlToInclude = ""
-		//on boucle sur les themes pour ajouter leurs templates
+		//on boucle sur les fonts pour ajouter leurs templates
 		this.fontsList.forEach((font) => {
 			htmlToInclude += this.renderPreview(font)
 		})
@@ -83,7 +84,7 @@ var FontsManagment = {
 		//et on insere dans le html
 		$('#fontsManagment').html(htmlToInclude)
 	},
-	//methode permetant un rendu imédiat sur la page du theme selectionné
+	//methode permetant un rendu imédiat sur la page des polices selectionnées
 	applyFont(font) {
 		let html = ""
 		html += `

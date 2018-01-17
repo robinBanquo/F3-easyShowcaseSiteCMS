@@ -8,7 +8,7 @@
 <include href="./base/nav/nav.htm"/>
 
 <repeat group="{{ @siteStructure }}" key="{{ @position }}" value="{{ @section}}">
-	<section class="relative " id="{{@section[id]}}">
+	<section class="relative moduleSectionContainer" id="{{@section[id]}}">
 		<include if="{{ @isAdminPage }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='before'"/>
 		<include href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}},fields={{@section[fields]}}"/>
 		<include if="{{ @isAdminPage && @position === count(@siteStructure)-1 }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
