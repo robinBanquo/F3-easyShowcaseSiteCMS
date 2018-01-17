@@ -233,14 +233,14 @@ Theme du médiumEditor
  *******************************/
 
 .medium-toolbar-arrow-under:after {
-	border-color: #141414 transparent transparent transparent;
+	border-color: #C48A1B transparent transparent transparent;
 	top: 40px; }
 
 .medium-toolbar-arrow-over:before {
-	border-color: transparent transparent #141414 transparent; }
+	border-color: transparent transparent #C48A1B transparent; }
 
 .medium-editor-toolbar {
-	background-color: #141414;
+	background-color: #C48A1B;
 	border: none;
 }
 .medium-editor-toolbar li button {
@@ -254,7 +254,7 @@ Theme du médiumEditor
 	-webkit-transition: background-color .2s ease-in, color .2s ease-in;
 	transition: background-color .2s ease-in, color .2s ease-in; }
 .medium-editor-toolbar li button:hover {
-	background-color: #141414;
+	background-color: #C48A1B;
 	color: #a2d7c7; }
 .medium-editor-toolbar li .medium-editor-button-first {
 
@@ -266,16 +266,16 @@ Theme du médiumEditor
 
 	padding-right: 24px; }
 .medium-editor-toolbar li .medium-editor-button-active {
-	background-color: #141414;
+	background-color: #C48A1B;
 	color: #a2d7c7; }
 
 .medium-editor-toolbar-form {
-	background: #141414;
+	background: #C48A1B;
 
 	color: #ccc;
 	overflow: hidden; }
 .medium-editor-toolbar-form .medium-editor-toolbar-input {
-	background: #141414;
+	background: #C48A1B;
 	box-sizing: border-box;
 	color: #ccc;
 	height: 40px;
@@ -303,9 +303,14 @@ Theme du médiumEditor
 	margin-right: 16px; }
 
 .medium-editor-toolbar-anchor-preview {
-	background: #141414;
+	background: #C48A1B;
 	padding: 5px 12px; }
 
 .medium-editor-anchor-preview a {
 	color: #ccc;
 	text-decoration: none; }
+
+#medium-editor-toolbar-1 button:hover{
+	background-color: #635182;
+	color: white !important;
+}
