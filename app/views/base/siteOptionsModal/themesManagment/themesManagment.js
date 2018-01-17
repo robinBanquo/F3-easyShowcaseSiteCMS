@@ -23,7 +23,7 @@ var ThemeManagment = {
 					<div class="card `
 		htmlToInclude += this.userTheme.name === t.name && withSelector && !preview ? 'borderInBox' : ''
 		htmlToInclude += ` ">
-						<div class="card-image " style="padding: 10px">
+						<div class="card-image " style="padding: 10px 10px 0 10px; ">
 							<div class="row no-margin" >
 								<div class="col s12 no-padding">
 									<div class="icon-block no-padding">

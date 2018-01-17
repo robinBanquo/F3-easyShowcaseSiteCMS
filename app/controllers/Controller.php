@@ -145,4 +145,23 @@ class Controller {
 	function getSafePOST($name){
 		return htmlentities($this->f3->get('POST')[$name]);
 	}
+	//methode permettant de transmettre au script js de gestion de
+	// la bibliotheque d'image le contenu de la table file au format json
+	function getMediasList() {
+		$mediasList=$this->db->read('siteMedias.json');
+		$this->f3->set('mediasList',json_encode($mediasList));
+		return $mediasList;
+	}
+
+	function getThemesList(){
+		$themesList = json_decode(file_get_contents(__DIR__.'/../config/themes.json'),TRUE);
+		$this->f3->set('themesList',json_encode($themesList));
+		return $themesList;
+	}
+
+	function getFontsList(){
+		$fontsList = json_decode(file_get_contents(__DIR__.'/../config/fonts.json'),TRUE);
+		$this->f3->set('fontsList',json_encode($fontsList));
+		return $fontsList;
+	}
 }

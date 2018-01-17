@@ -32,4 +32,19 @@
 		}
 	</style>
 
+	<link href="{{@siteOptions['font']['title']['cdn']}}" rel="stylesheet">
+	<link href="{{@siteOptions['font']['main']['cdn']}}" rel="stylesheet">
+	<style type="text/css" id="fontClassCSS">
+		.title-font,.title-font *  {
+		font-family: {{"'" . @siteOptions['font']['title']['css1']."'"}},{{"'".@siteOptions['font']['title']['css2'] ."'"}} ;
+		font-size: 200% !important;
+		}
+		.main-font ,.main-font * {
+		font-family: {{"'" . @siteOptions['font']['main']['css1']."'"}},{{"'".@siteOptions['font']['main']['css2'] ."'"}} ;
+		font-stretch: ultra-expanded !imprtant;
+		}
+
+
+	</style>
+
 </head>

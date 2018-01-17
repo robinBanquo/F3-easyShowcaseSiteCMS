@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Standard",
+    "title": {
+      "name": "Roboto",
+      "cdn": "https://fonts.googleapis.com/css?family=Roboto",
+      "css1": "Roboto",
+      "css2": "sans-serif"
+    },
+    "main": {
+      "name": "Roboto",
+      "cdn": "https://fonts.googleapis.com/css?family=Roboto",
+      "css1": "Roboto",
+      "css2": "sans-serif"
+    }
+  },
+  {
+    "name": "Elegance",
+    "title": {
+      "name": "Open Sans",
+      "cdn": "https://fonts.googleapis.com/css?family=Open+Sans",
+      "css1": "Open Sans",
+      "css2": "sans-serif"
+    },
+    "main": {
+      "name": "Raleway",
+      "cdn": "https://fonts.googleapis.com/css?family=Raleway",
+      "css": "Raleway",
+      "css2": "sans-serif"
+    }
+  },
+  {
+    "name": "Hipster",
+    "title": {
+      "name": "Animatic SC",
+      "cdn": "https://fonts.googleapis.com/css?family=Amatic+SC",
+      "css1": "Amatic SC",
+      "css2": "cursive"
+    },
+    "main": {
+      "name": "Open Sans Condensed",
+      "cdn": "https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300",
+      "css1": "Open Sans Condensed",
+      "css2": "sans-serif"
+    }
+  }
+]

@@ -34,7 +34,9 @@ class Fixtures {
 	}
 	function siteOptions() {
 		$themesList = json_decode(file_get_contents(__DIR__.'/../config/themes.json'),TRUE);
+		$fontsList = json_decode(file_get_contents(__DIR__.'/../config/fonts.json'),TRUE);
 		return [
+			"font"=>$fontsList[2],
 			"theme"=>$themesList["Classic"]
 		];
 	}

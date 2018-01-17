@@ -328,4 +328,24 @@ class EditController extends Controller {
 		echo json_encode(array('result'=>'success'));
 
 	}
+	/***************************
+	 * Methode d'edition du the de couleurs du site
+	 */
+	function editFont() {
+		//on viens récuperer les données en faisant un htmlentities dessus pour la sécu vu qu'elles seront ensuite affichées sans filtre
+		$chosenFont=$this->getSafePOST('name');
+		$fontsList= $this->getFontsList();
+		$fontToInclude = array();
+		foreach ($fontsList as $font){
+			if($font['name'] === $chosenFont){
+				$fontToInclude = $font;
+			}
+		}
+		//puis on les sauvegarde dans les options de l'utilisateur
+		$siteOptions=$this->db->read('siteOptions.json');
+		$siteOptions['font'] = $fontToInclude;
+		$this->db->write('siteOptions.json',$siteOptions);
+		echo json_encode(array('result'=>'success'));
+
+	}
 }
