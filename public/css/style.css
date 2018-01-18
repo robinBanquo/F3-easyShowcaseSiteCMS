@@ -283,4 +283,20 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 	border: 4px solid #C48A1B;
 	cursor: pointer !important;
 }
-
+.editable a{
+	color: inherit !important;
+	text-decoration: underline !important;
+}
+.editable li{
+	list-style-type: disc !important;
+	padding-left: 20px !important;
+}
+.editable h6 , .editable h6 *{
+	font-size: 1em !important;
+}
+.editable h5, .editable h5 *{
+	font-size: 1.5em !important;
+}
+.editable h4, .editable h4 *{
+	font-size: 2em !important;
+}

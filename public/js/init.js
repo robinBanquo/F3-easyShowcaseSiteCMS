@@ -22,23 +22,6 @@
 
 $(document).ready(function () {
 
-	applyTheme = function (theme) {
-		for(let identifier in theme){
-			let elements =$('.'.identifier)
-			console.log(elements.css('background-color'))
-			switch(identifier.split('-')[1]){
-				case 'background':
-					elements.css('background-color', theme[identifier] +' !important')
-					console.log(elements.css('background-color'))
-					break
-				case 'color':
-					elements.css('color', theme[identifier]+' !important')
-					break
-				default:
-					console.log("erreur avec le thème")
-			}
-
-		}
-	}
+	htmlParser.unformatBySelector('.editable');
 
 })

@@ -5,7 +5,10 @@
   "fields": {
     "content": {
       "type": "text",
-      "value": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?"
+      "content": {
+        "type": "text",
+        "value": "|h5|\t\t\t\t\tModule avec contenu textuel|\u00a7h5||p|Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?\t\t\t\t|\u00a7p|\t\t\t\t"
+      }
     }
   }
 }

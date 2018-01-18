@@ -5,7 +5,6 @@ $(document).ready(function(){
 		let id = this.id.split("-")[1]
 		$("#siteOptionsModal").modal('open')
 		$("a[href=#options-medias]").click()
-		console.log(MediaManagment)
 		MediaManagment.render(true, "uglyForm-"+id+"-imgUrl")
 	})
 

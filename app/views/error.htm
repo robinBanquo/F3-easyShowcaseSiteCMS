@@ -2,9 +2,24 @@
 <html lang="fr">
 <include href="./base/includes/head.htm" />
 <body>
-{{ @SESSION.error | raw}}
-<repeat group="{{ @SESSION.error }}" value="{{ @errorLog }}">
-<p>{{ @errorLog }}</p>
-</repeat>
+{* ajout des boutons supérieurs si l'utilisateur est connecté en tant qu'admin*}
+<include if="{{ @isAdmin }}" href="./base/includes/adminButtons.htm" />
+
+
+<include href="./base/nav/nav.htm" />
+
+
+<div class="row" style="min-height: 100vh; padding-top: 50px;">
+<h3 class="center-align">Une Erreur s'est produite</h3>
+	<a href="/" class="center-align"><h5>Retour à la page d'acceuil</h5></a>
+</div>
+
+
+<include href="./base/footer/footer.htm" />
+
+
+<!--  Scripts-->
+<include href="./base/includes/scripts.htm" />
+
 </body>
 </html>

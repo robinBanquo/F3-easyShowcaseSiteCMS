@@ -1,9 +1,21 @@
-initSaveBtn = function () {
+initMainSaveBtn = function () {
+	window.onbeforeunload = function () {
+		let message = "certains changements ne sont pas sauvegardés, cliquer sur le bouton en haut à droite pour les enregistrer"
+
+		return message;
+	}
 	//on affiche le bouton sauvegarder en bas a droite
 	let saveBtn = $('#saveBtn')
 	saveBtn.css('visibility', 'visible')
 	saveBtn.click(function () {
 		window.onbeforeunload = function () {}
+		$('.editable').each(function () {
+			let zoneId= this.id.split("-")[1]
+			let sectionId = $(this).closest("section").attr('id')
+			let formatedContent = htmlParser.formatBeforeSave($(this).html())
+			let uglyFormInput = $("#uglyForm input[name=uglyForm-" + sectionId +"-"+ zoneId + "]")
+			uglyFormInput.val(formatedContent)
+		})
 		$('#uglyForm').submit()
 
 	});
@@ -23,12 +35,8 @@ $(document).ready(function () {
 			toChange.html(this.value)
 		}
 
-		initSaveBtn()
-		window.onbeforeunload = function () {
-			let message = "certains changements ne sont pas sauvegardés, cliquer sur le bouton en haut à droite pour les enregistrer"
+		initMainSaveBtn()
 
-			return message;
-		}
 
 	})
 })

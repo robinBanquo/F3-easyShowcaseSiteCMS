@@ -6,6 +6,7 @@
 
 
 var Editable = {
+	mainSaveBtnVisible :  false,
 	EditableEditor : {},
 	MediumEditor(el) {
 		return new MediumEditor(el, this.EditableOptions)
@@ -66,13 +67,6 @@ var Editable = {
 					</a>
 				</div>`
 	},
-	onFocusOut(event,selector,editableId){
-		$(selector).before(this.editBtn("editable~"+editableId));
-		setTimeout(()=>{
-			this.initEditBtn()
-		},300)
-
-	},
 	initEditBtn(){
 		let that = this
 		$('.editableTextBtn').click(function () {
@@ -81,8 +75,9 @@ var Editable = {
 			let $target = $("#"+currentModuleId+ " #"+targetId)
 			$target.focus()
 			$target.focusout(function () {
-
-				that.onFocusOut(this, $target, targetId)
+				setTimeout(()=>{
+					this.initEditBtn()
+				},300)
 			})
 			$('.tooltipped').tooltip('remove');
 			$(this).parent().remove()
@@ -92,20 +87,23 @@ var Editable = {
 				$('.tooltipped').tooltip({delay: 50})
 			},300)
 		})
-		$('.editable').focusin(function () {
-			let currentModuleId = $(this).closest("section").attr('id')
-			$(this).closest(".editableTextBtn").parent().remove()
-		})
 	},
 	startUp(){
 		let that = this
-		$('.editable').each(function(index, el){
+		$editable =$('.editable')
+		$editable.each(function(index, el){
 			$(el).before(that.editBtn("editable~"+this.id));
 		})
 		this.EditableEditor = this.MediumEditor('.editable')
 		setTimeout(()=>{
 		this.initEditBtn()
 		},300)
+		$editable.keyup(function () {
+			if(!that.mainSaveBtnVisible){
+				initMainSaveBtn()
+				that.mainSaveBtnVisible =  true
+			}
+		})
 	}
 }
 
