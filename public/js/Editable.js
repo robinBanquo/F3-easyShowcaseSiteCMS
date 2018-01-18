@@ -26,7 +26,25 @@ var Editable = {
 			/* These are the default options for the toolbar,
 			   if nothing is passed this is what is used */
 			allowMultiParagraphSelection: true,
-			buttons: ['bold', 'italic', 'underline', 'anchor', 'unorderedlist'],
+			buttons: [
+				'bold',
+				'italic',
+				'underline',
+				'anchor',
+				'unorderedlist',
+				{
+					name: 'h6',
+					aria: 'small',
+					contentDefault: '<i style="font-size: small"><i>A</i></i>'},
+				{
+					name: 'h5',
+					aria: 'medium',
+					contentDefault: '<i style="font-size: medium"><i>A</i></i>'},
+				{
+					name: 'h4',
+					aria: 'large',
+					contentDefault: '<i style="font-size: large;"><i>A</i></i>'},
+				],
 			diffLeft: 0,
 			diffTop: -10,
 			firstButtonClass: 'medium-editor-button-first',
@@ -73,6 +91,10 @@ var Editable = {
 
 				$('.tooltipped').tooltip({delay: 50})
 			},300)
+		})
+		$('.editable').focusin(function () {
+			let currentModuleId = $(this).closest("section").attr('id')
+			$(this).closest(".editableTextBtn").parent().remove()
 		})
 	},
 	startUp(){

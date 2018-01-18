@@ -2,6 +2,16 @@
 
 //! Front-end processor
 class ShowCaseController extends Controller {
+	function beforeroute() {
+		if($this->isAdmin()){
+			$CSRFToken =bin2hex(random_bytes(16));
+			$CSRFTokenCreatetedAt= time();
+			$this->f3->set('SESSION.CSRFToken', $CSRFToken);
+			$this->f3->set('SESSION.CSRFTokenCreatedAt', $CSRFTokenCreatetedAt);
+			$this->f3->set('CSRFToken', $CSRFToken);
+		}
+	}
+
 	//affichage du contenu de la page pour les visiteurs
 	function showVisitor() {
 		//on commence par générer la page

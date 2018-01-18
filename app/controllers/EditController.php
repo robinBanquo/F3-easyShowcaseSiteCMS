@@ -13,14 +13,20 @@ class EditController extends Controller {
 			$this->f3->set('SESSION.loginPageMessage',
 				"vous devez vous authentifier pour accéder au options d'administration");
 			//puis on renvoie vers la page de login
-			$template=new Template;
-			echo $template->render('login.htm');
+			$this->f3->reroute('/login');
+		}else{
+			$tokenExpiration = 3600; //1H
+			$token = $this->f3->get('GET')['CSRFToken']? $this->f3->get('GET')['CSRFToken'] :$this->f3->get('POST')['CSRFToken'];
+			if( $token !== $this->f3->get('SESSION.CSRFToken') ||
+				time()> ($this->f3->get('SESSION.CSRFTokenCreatedAt')+ $tokenExpiration)){
+				$this->f3->set('SESSION.error', array("token : ". $token, $this->f3->get('SESSION.CSRFToken')));
+				$this->f3->reroute('/error');
+				}
 		}
 	}
 
 
 	//méthode d'insertion d'une section dans la page
-	//TODO CRSF
 	function addSection() {
 		//on commence par récuperer les valeurs contenues dans le formulaire
 		$reference=$this->f3->get('POST.reference');
@@ -60,7 +66,6 @@ class EditController extends Controller {
 	}
 
 	//méthode de supression d'une section dans la page
-	//TODO CRSF
 	function deleteSection() {
 		//in recupere l'id de la section a supprimer dans les query parameters
 		$moduleId=$this->f3->get('GET.id');

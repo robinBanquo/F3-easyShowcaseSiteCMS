@@ -16,7 +16,7 @@ var MediaManagment = {
 	uglyFormInputName: "",
 	//bouton d'aijout d'une nouvelle media
 	addButon: `<a href="#!" class=" light-shadow columnItem" id="addMediaToLibrary" style="background-color: rgb(255,255,255) !important;">
-						<div class=" light-shadow frama-border-orange tooltipped" data-position="top"
+						<div class=" light-shadow hoverBorderInBox tooltipped" data-position="top"
 							 data-delay="350" data-tooltip="Ajouter une image à votre bibliothèque" style="text-align: center; background-color: rgb(255,255,255) !important; margin: 0 10px 0px 10px !important; ">
 							<i class="material-icons frama-orange-text  lighten-2 large" style="margin: 50px">add</i>
 						</div>
@@ -24,7 +24,7 @@ var MediaManagment = {
 	,
 	//spinner d'attente
 	waitingSpinner: `<div  class="card light-shadow columnItem"  style="background-color: rgb(255,255,255) !important;">
-					<div class="card-content light-shadow frama-border-orange tooltipped" data-position="top"
+					<div class="card-content light-shadow borderInBox tooltipped" data-position="top"
 						 data-delay="350" data-tooltip="Ajouter une image à votre bibliothèque" style="text-align: center; background-color: rgb(255,255,255) !important;  margin-bottom: 20px !important;">
 							   <div class="preloader-wrapper big active center-align">
 									<div class="spinner-layer spinner-yellow-only">
@@ -52,7 +52,7 @@ var MediaManagment = {
 				 style="background-color: rgb(255,255,255) !important;">
 					<i class="absolute white-text" style="margin:20px 0 0 10px; font-size: small">` + media.size + `</i>
 					<img class="responsive-img" src="` + media.url + `" alt="` + media.label + `">
-					<a href="#!" id="/admin/edit/delete-media?id=` + media.id + `" class="children-hover btn-floating  waves-effect waves-light lightButton absolute tooltipped removeMediaFromLibrary" data-position="top"
+					<a href="#!" id="/admin/edit/delete-media?id=` + media.id + `&CSRFToken=`+CSRFToken+`" class="children-hover btn-floating  waves-effect waves-light lightButton absolute tooltipped removeMediaFromLibrary" data-position="top"
 								 data-delay="350" data-tooltip="Supprimer l'image de votre bibliothèque" 
 								 style="top: 10px ; right: 10px">
 						<i class="material-icons " >clear</i>
@@ -60,6 +60,7 @@ var MediaManagment = {
 					<div class="absolute children-hover" style="bottom: 0; width: 100%; background-color: rgba(0,0,0,0.52)">
 						<form method="post" action="/admin/edit/edit-media-info" class="editMediaInfo" style="margin: 0 10px 0 10px !important;">
 						<input type="text" name="id" value="` + media.id + `" class="displaynone">
+						<input type="text" class="displaynone" name="CSRFToken" value="`+CSRFToken+`">
 							<input name="label" type="text" `
 		//form de la valeur "alt"
 		htmlToInsert += media.label ? 'value="' + media.label + '"' : "";
@@ -222,6 +223,7 @@ var MediaManagment = {
 		htmlToInsert += `<section class="blockList" id="addNewMediaToListContainer" >` +
 			this.addButon + `</section>
 						<form id="addMediaForm" action="#!" class="displaynone">
+						<input type="text" class="displaynone" name="CSRFToken" value="`+CSRFToken+`">
 							<input type="file" name="media">
 						</form>`
 		//ajout de toutes le images

@@ -4,11 +4,12 @@
 		<ul class="right hide-on-med-and-down">
 			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
 				<check if="{{ @section['inMenuAs'] }}">
-					<li class="relative second-color main-font"><a href="#{{@section[id]}}">{{@section['inMenuAs']}}</a>
+					<li class="relative ">
+						<a href="#{{@section[id]}}" class="second-color main-font">{{@section['inMenuAs']}}</a>
 					<check if="{{ @isAdmin && @isAdminPage }}">
 						<a  href="#!" class="btn-floating waves-effect waves-light frama-orange hover-frama-purple absolute tooltipped show-on-li-hover editMenuLabel"   data-position="bottom"
 							data-delay="350" data-tooltip="Modifier" style="bottom: -20px; left: -20px" id="editMenuLabel-{{@section['id']}}-{{@section['inMenuAs']}}"><i class="material-icons">edit</i></a>
-						<a  href="{{'/admin/edit/remove_from_menu?id='. @section['id']}}" class="btn-floating waves-effect waves-light frama-orange hover-frama-purple absolute tooltipped show-on-li-hover "   data-position="bottom"
+						<a  href="{{'/admin/edit/remove_from_menu?id='. @section['id'].'&CSRFToken='.@CSRFToken}}" class="btn-floating waves-effect waves-light frama-orange hover-frama-purple absolute tooltipped show-on-li-hover "   data-position="bottom"
 						   data-delay="350" data-tooltip="Retirer du menu"  style="bottom: -20px; left: 30px" ><i class="material-icons">clear</i></a>
 
 					</check>

@@ -2,6 +2,7 @@
 	<div class="modal-content ">
 		<h4 class="grey-text">Ajouter cette section au menu</h4>
 		<form method="post" action="/admin/edit/add_to_menu" class="addToMenuForm" >
+			<input type="text" class="displaynone" name="CSRFToken" value="{{@CSRFToken}}">
 			<input type="text" name="id" class="displaynone">
 			<div class="row" style="margin-top: 30px">
 				<div class="input-field col s12 m6 offset-m3">
@@ -11,6 +12,7 @@
 			</div>
 			<div class="row">
 				<div class="col s12 center-align">
+
 					<button type="submit" class=" frama-purple hover-frama-orange waves-effect waves-light btn"><i class="material-icons right">menu</i>Ajouter au menu</button>
 				</div>
 			</div>

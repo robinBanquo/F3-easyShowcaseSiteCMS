@@ -8,9 +8,7 @@ class Controller {
 	// TODO : c'est cette variable qu'il faudra rendre dynamique pour switcher d'un site a l'autre
 
 	//! HTTP route pre-processor
-	function beforeroute() {
 
-	}
 
 	//! HTTP route post-processor
 	function afterroute() {
@@ -39,7 +37,7 @@ class Controller {
 	 * @return bool
 	 */
 	function isAdmin(){
-		return $this->f3->get('SESSION.user') ===$this->f3->get('user_id') ;
+		return $this->f3->get('SESSION.user') === $this->f3->get('user_id') ;
 	}
 
 	/**************************

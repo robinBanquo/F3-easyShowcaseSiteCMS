@@ -236,6 +236,7 @@ htmlToInclude += `			</div>
 		for (let key in theme) {
 			data += key + "=" + theme[key] + "&"
 		}
+		data+= '&CSRFToken='+CSRFToken
 		let that = this
 		$.ajax({
 			url: '/admin/edit/edit-theme',

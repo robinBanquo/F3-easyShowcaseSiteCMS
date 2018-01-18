@@ -119,8 +119,7 @@ var FontsManagment = {
 	//methode Ajax d'edition du formulaire
 	sendAjaxRequest(font) {
 		let data = "name="+font.name;
-		//on formate la data a envoyer
-
+		data+= '&CSRFToken='+CSRFToken
 		let that = this
 		$.ajax({
 			url: '/admin/edit/edit-font',

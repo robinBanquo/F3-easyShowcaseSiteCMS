@@ -25,7 +25,12 @@ class AdminController extends Controller {
 		}
 		$this->f3->reroute('/');
 	}
-
+	// affichage de la page login
+	function error() {
+			//sinon on rends le template de login
+			$template=new Template;
+			echo $template->render('error.htm');
+	}
 	//méthode d'autentification
 	function authenticate() {
 		//on recupere le login/mot de passe passé en variables post
