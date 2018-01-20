@@ -283,16 +283,22 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 	border: 4px solid #C48A1B;
 	cursor: pointer !important;
 }
-.editable a{
+.editable a {
 	color: inherit !important;
 	text-decoration: underline !important;
+}
+.editable b, .editable i, .editable u {
+	font-size: inherit !important;
+
 }
 .editable li{
 	list-style-type: disc !important;
 	padding-left: 20px !important;
 }
-.editable h6 , .editable h6 *{
+.editable h6 , .editable h6 *, .editable p , .editable p *{
 	font-size: 1em !important;
+	line-height: 2em !important;
+	margin: 1em 0;
 }
 .editable h5, .editable h5 *{
 	font-size: 1.5em !important;

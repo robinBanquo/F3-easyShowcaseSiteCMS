@@ -35,6 +35,7 @@ var Editable = {
 				'unorderedlist',
 				{
 					name: 'h6',
+					tagNames: ['h6'],
 					aria: 'small',
 					contentDefault: '<i style="font-size: small"><i>A</i></i>'},
 				{
@@ -76,17 +77,34 @@ var Editable = {
 			$target.focus()
 			$target.focusout(function () {
 				setTimeout(()=>{
-					this.initEditBtn()
+					that.initEditBtn()
 				},300)
 			})
 			$('.tooltipped').tooltip('remove');
 			$(this).parent().remove()
-			$
 			setTimeout(()=>{
-
+				$("#medium-editor-toolbar-1").click(function () {
+					that.popSaveBtn()
+				})
 				$('.tooltipped').tooltip({delay: 50})
 			},300)
 		})
+		$(".editable").focusin(function () {
+			$("#medium-editor-toolbar-1").click(function () {
+				setTimeout(()=>{
+					$("#medium-editor-toolbar-1").click(function () {
+						that.popSaveBtn()
+					})
+					$('.tooltipped').tooltip({delay: 50})
+				},300)
+			})
+		})
+	},
+	popSaveBtn(){
+		if(!this.mainSaveBtnVisible){
+			initMainSaveBtn()
+			this.mainSaveBtnVisible =  true
+		}
 	},
 	startUp(){
 		let that = this
@@ -97,17 +115,21 @@ var Editable = {
 		this.EditableEditor = this.MediumEditor('.editable')
 		setTimeout(()=>{
 		this.initEditBtn()
+			$editable.keyup(function () {
+				that.popSaveBtn()
+			})
 		},300)
-		$editable.keyup(function () {
-			if(!that.mainSaveBtnVisible){
-				initMainSaveBtn()
-				that.mainSaveBtnVisible =  true
-			}
-		})
+
 	}
 }
 
 
 $(document).ready(function () {
 	Editable.startUp()
+	$("#medium-editor-toolbar-1").click(function () {
+		if(!Editable.mainSaveBtnVisible){
+			initMainSaveBtn()
+			Editable.mainSaveBtnVisible =  true
+		}
+	})
 })

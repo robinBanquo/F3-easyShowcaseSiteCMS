@@ -3,12 +3,13 @@
   "title": "Section texte",
   "description": "Module permettant d'afficher du contenu textuel",
   "fields": {
+    "title": {
+      "type": "text",
+      "value": "|h5|\t\t\t\t\tModule avec contenu textuel|\u00a7h5|"
+    },
     "content": {
       "type": "text",
-      "content": {
-        "type": "text",
-        "value": "|h5|\t\t\t\t\tModule avec contenu textuel|\u00a7h5||p|Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?\t\t\t\t|\u00a7p|\t\t\t\t"
-      }
+      "value": "|h6|Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, illum libero molestiae nam nihil nulla pariatur quo saepe sequi sint, vitae voluptates voluptatum. In?\t\t\t\t|\u00a7h6|\t\t\t\t"
     }
   }
 }

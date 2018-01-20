@@ -51,14 +51,14 @@ htmlParser = {
 		inDb: '|§h4|',
 		inDbRegex: /\|§h4\|/gi
 	},{
-		html: '</p>',
+		html: '</h6>',
 		htmlRegex: /<\/h6>/gi,
 		inDb: '|§h6|',
 		inDbRegex: /\|§h6\|/gi
 	}, {
 		html: '<h6>',
 		htmlRegex: /<h6>/gi,
-		inDb: '|p|',
+		inDb: '|h6|',
 		inDbRegex: /\|h6\|/gi
 	}, {
 		html: '</h5>',

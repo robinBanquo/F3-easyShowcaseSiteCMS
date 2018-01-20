@@ -2,8 +2,14 @@
 	<div class="container module ">
 		<div class="section">
 			<div class="row">
-				<div class="col s12 center main-color main-font editable" id="moduleValue-content">
-					<p class="left-align" ><h4>Module avec contenu textuel</h4>{{@fields['content']['value']}}</p>
+				<div class="col s12  main-color main-font editable center-align" id="moduleValue-title">
+					{{@fields['title']['value']}}
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="col s12  main-color main-font editable" id="moduleValue-content" style="text-align: justify">
+					{{@fields['content']['value']}}
 				</div>
 			</div>
 		</div>
