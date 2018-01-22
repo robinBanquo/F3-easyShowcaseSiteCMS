@@ -7,21 +7,21 @@
 				<div class="col s12 m4">
 					<div class="icon-block">
 						<h2 class="center second-color"><i class="material-icons" id="moduleValue-icon1">{{@fields['icon1']['value']}}</i></h2>
-						<div class=" main-color main-font editable center-align" id="moduleValue-content1">{{@fields['content1']['value']}}</div>
+						<div class=" main-color main-font editable center-align" id="moduleValue-content1">{{Parser::instance()->toHtml(@fields['content1']['value'])}}</div>
 					</div>
 				</div>
 
 				<div class="col s12 m4">
 					<div class="icon-block">
 						<h2 class="center second-color"><i class="material-icons" id="moduleValue-icon2">{{@fields['icon2']['value']}}</i></h2>
-						<div class=" main-color main-font editable center-align" id="moduleValue-content2">{{@fields['content2']['value']}}</div>
+						<div class=" main-color main-font editable center-align" id="moduleValue-content2">{{Parser::instance()->toHtml(@fields['content2']['value'])}}</div>
 					</div>
 				</div>
 
 				<div class="col s12 m4">
 					<div class="icon-block">
 						<h2 class="center second-color"><i class="material-icons" id="moduleValue-icon3">{{@fields['icon3']['value']}}</i></h2>
-						<div class="main-color main-font editable center-align" id="moduleValue-content3">{{@fields['content3']['value']}}</div>
+						<div class="main-color main-font editable center-align" id="moduleValue-content3">{{Parser::instance()->toHtml(@fields['content3']['value'])}}</div>
 					</div>
 				</div>
 			</div>

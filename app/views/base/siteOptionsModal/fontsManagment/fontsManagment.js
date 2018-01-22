@@ -1,4 +1,4 @@
-var FontsManagment = {
+FontsManagment = {
 	importDone: false,
 	//liste des themes possibles, envoyé en json par le controller
 	fontsList: fontsList,
@@ -89,7 +89,7 @@ var FontsManagment = {
 		let html = ""
 		html += `
 			.title-font,.title-font *  {
-		font-family: '` + font.title.css1 + `',` + font.title.css2 + ` ;
+		font-family: '${font.title.css1}',` + font.title.css2 + ` ;
 		}
 		.main-font ,.main-font * {
 		font-family:'` + font.main.css1 + `', ` + font.title.css2 + `;

@@ -2,13 +2,13 @@
 	<div class="section no-pad-bot relative">
 		<check if="{{ @isAdminPage }}">
 			<a class="btn-floating waves-effect waves-light lightButton relative tooltipped moduleBtn editParalaxImage" data-position="right"
-			   data-delay="250" data-tooltip="modifier l'image" id="editParalaxImage-{{@id}}" style=" left: 40px; top: -80px; z-index: 1000">
+			   data-delay="250" data-tooltip="modifier l'image" id="editParalaxImage-{{@id}}" style=" left: 40px; top: -50px; z-index: 1000">
 				<i class="material-icons">image</i></a>
 		</check>
 
-		<div class="container">
+		<div class="container ">
 			<div class=" row center contrasted-color title-font editable " id="moduleValue-text">
-				{{@fields['text']['value']}}
+				{{Parser::instance()->toHtml(@fields['text']['value']) | raw}}
 			</div>
 		</div>
 	</div>

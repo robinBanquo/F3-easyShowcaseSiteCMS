@@ -22,6 +22,6 @@
 
 $(document).ready(function () {
 
-	htmlParser.unformatBySelector('.editable');
+	//htmlParser.unformatBySelector('.editable');
 
 })
