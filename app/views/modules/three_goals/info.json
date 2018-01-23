@@ -9,7 +9,7 @@
     },
     "content1": {
       "type": "text",
-      "value": "|h5|Cr\u00e9er un site web en moins d'une heure|\u00a7h5||h6|Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, |\u00a7h6|"
+      "value": "<h5>Cr\u00e9er un site web en moins d'une heure</h5><h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere, </h6>"
     },
     "icon2": {
       "type": "text",
@@ -17,7 +17,7 @@
     },
     "content2": {
       "type": "text",
-      "value": "|h5|D'une simplicit\u00e9 d\u00e9coiffante|\u00a7h5||h6|Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere,|\u00a7h6|"
+      "value": "<h5>D'une simplicit\u00e9 d\u00e9coiffante</h5><h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet architecto assumenda consequuntur esse eum facere,</h6>"
     },
     "icon3": {
       "type": "text",
@@ -25,7 +25,7 @@
     },
     "content3": {
       "type": "text",
-      "value": "|h5|Configuration simple et personnalis\u00e9e|\u00a7h5||h6|Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.|\u00a7h6|"
+      "value": "<h5>Configuration simple et personnalis\u00e9e</h5><h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit.Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h6|"
     }
   }
 }

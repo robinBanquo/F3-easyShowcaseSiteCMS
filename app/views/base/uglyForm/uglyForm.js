@@ -12,7 +12,7 @@ initMainSaveBtn = function () {
 		$('.editable').each(function () {
 			let zoneId= this.id.split("-")[1]
 			let sectionId = $(this).closest("section").attr('id')
-			let formatedContent = htmlParser.formatBeforeSave($(this).html())
+			let formatedContent = $(this).html()
 			let uglyFormInput = $("#uglyForm input[name=uglyForm-" + sectionId +"-"+ zoneId + "]")
 			uglyFormInput.val(formatedContent)
 		})

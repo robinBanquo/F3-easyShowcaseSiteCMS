@@ -31,6 +31,22 @@ var Editable = {
 				'bold',
 				'italic',
 				'underline',
+				{
+					name: 'justifyLeft',
+					aria: 'Aligner à gauche',
+					contentDefault: '<i class="material-icons">format_align_left</i>'},
+				{
+					name: 'justifyCenter',
+					aria: 'Centrer',
+					contentDefault: '<i class="material-icons">format_align_center</i>'},
+				{
+					name: 'justifyRight',
+					aria: 'Aligner à droite',
+					contentDefault: '<i class="material-icons">format_align_right</i>'},
+				{
+					name: 'justifyFull',
+					aria: 'Justifier',
+					contentDefault: '<i class="material-icons">format_align_justify</i>'},
 				'anchor',
 				'unorderedlist',
 				{

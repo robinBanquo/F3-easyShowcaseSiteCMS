@@ -3,13 +3,13 @@
 		<div class="section">
 			<div class="row">
 				<div class="col s12  main-color main-font editable center-align" id="moduleValue-title">
-					{{Parser::instance()->toHtml(@fields['title']['value'])}}
+					{{@fields['title']['value'] | raw}}
 				</div>
 			</div>
 			<div class="row">
 
 				<div class="col s12  main-color main-font editable" id="moduleValue-content" style="text-align: justify">
-					{{Parser::instance()->toHtml(@fields['content']['value']) | raw}}
+					{{@fields['content']['value'] | raw}}
 				</div>
 			</div>
 		</div>

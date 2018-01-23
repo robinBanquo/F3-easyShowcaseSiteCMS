@@ -183,6 +183,9 @@ class EditController extends Controller {
 			$splittedKey=explode("-",$key);
 			$id=$splittedKey[1];
 			$name=$splittedKey[2];
+
+			$config = HTMLPurifier_Config::createDefault();
+			$purifier = new HTMLPurifier($config);
 			//puis on boucle sur notre structure
 			foreach ($siteStructure as $i=>$section) {
 				//si on est dans la bonne section
@@ -192,7 +195,7 @@ class EditController extends Controller {
 						if ($fieldName===
 							$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
 							//puis on update cette entrée
-							$siteStructure[$i]['fields'][$fieldName]['value']=$value;
+							$siteStructure[$i]['fields'][$fieldName]['value']=$purifier->purify($value);
 						}
 					}
 				}
@@ -230,7 +233,7 @@ class EditController extends Controller {
 						'errorMsg'=>"Votre fichier est trop volumineux"));
 				} else {
 					//gestion de la sauvegarde dui fichier image dans le dossier media du site
-					$mediaName=$media['name'];
+					$mediaName=uniqid();
 					$destination='./sites/'.$this->siteName.'/medias/'.$mediaName;
 					$result=move_uploaded_file($media['tmp_name'],$destination);
 					if (!$result) {
@@ -242,7 +245,7 @@ class EditController extends Controller {
 						$siteMedias=$this->db->read('siteMedias.json');
 						//on formate la nouvelle entrée
 						$toPush=array(
-							'id'=>uniqid(),
+							'id'=>$mediaName,
 							'type'=>'img',
 							'url'=>$destination,
 							'label'=>"",

@@ -5,7 +5,7 @@
 <script>
 
 	var SiteOptions = JSON.parse('{{@siteOptionsJson |raw}}')
-	var CSRFToken= '{{@SESSION[CSRFToken]}}'
+	var CSRFToken= {{@SESSION[CSRFToken]}}
 </script>
 
 <script src="/public/js/init.js"></script>

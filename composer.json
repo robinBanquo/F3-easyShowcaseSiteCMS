@@ -5,7 +5,8 @@
 	"license": "GPL-3.0",
 	"require": {
 		"php": ">=5.4",
-		"rafamds/f3-falsum": "^2.6"
+		"rafamds/f3-falsum": "^2.6",
+		"ezyang/htmlpurifier": "dev-master"
 	},
 	"repositories": [
 		{
