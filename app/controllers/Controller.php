@@ -18,8 +18,12 @@ class Controller {
 	function __construct() {
 		//on recuper la base du framework
 		$this->f3 = Base::instance();
+		//on viens récuperer les info a partir du info.json
+		$siteConfig=json_decode(file_get_contents('sites/'.$this->siteName.'/config.json'),TRUE);
 		//on recuper le fichier config spécifique au site regardé
-		$this->f3->config('sites/'.$this->siteName.'/config.ini');
+		foreach ($siteConfig as $key=>$value){
+			$this->f3->set($key, $value);
+		}
 		if($this->isAdmin()){
 			//si l'user est admin, on commence par passer cette variable a true,
 			// elle sera utilisée un peu partout par la suite
@@ -83,6 +87,7 @@ class Controller {
 			return $siteOptions;
 		}
 	}
+
 	//opération d'initialisation lorsque la structure du site est vide
 	function initOptions(){
 		//on vient utiliser la methode siteMap de l'objet fixtures qui renvoie une page type

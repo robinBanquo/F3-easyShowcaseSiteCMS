@@ -13,6 +13,11 @@ class AdminController extends Controller {
 			$this->f3->reroute('/admin');
 		} else {
 			//sinon on rends le template de login
+			$siteOptions = $this->getSiteOptions();
+			$this->f3->set('siteOptionsJson',json_encode($siteOptions));
+			$this->f3->set('siteOptions',$siteOptions);
+
+
 			$template=new Template;
 			echo $template->render('login.htm');
 		}

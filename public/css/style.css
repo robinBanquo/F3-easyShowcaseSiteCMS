@@ -306,6 +306,6 @@ background-color: rgba(196, 138, 27, 0.89) !important;
 .editable h4, .editable h4 *{
 	font-size: 2em !important;
 }
-.medium-editor-button-active i{
+.medium-editor-button-active *{
 	color: #191919;
 }

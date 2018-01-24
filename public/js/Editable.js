@@ -79,7 +79,7 @@ var Editable = {
 	editBtn(id){
 		return `<div class="relative ">
 					<a class="btn-floating waves-effect waves-light lightButton absolute tooltipped moduleBtn editableTextBtn" data-position="left"
-						data-delay="250" data-tooltip="Editer" id="`+ id +`" style=" right: -15px; top: -15px; z-index: 1000">
+						data-delay="250" data-tooltip="Editer" id="`+ id +`" style=" right: -25px; top: -15px; z-index: 1000">
 						<i class="material-icons">edit</i>
 					</a>
 				</div>`
@@ -98,21 +98,12 @@ var Editable = {
 			})
 			$('.tooltipped').tooltip('remove');
 			$(this).parent().remove()
-			setTimeout(()=>{
-				$("#medium-editor-toolbar-1").click(function () {
-					that.popSaveBtn()
-				})
-				$('.tooltipped').tooltip({delay: 50})
-			},300)
+
+
 		})
 		$(".editable").focusin(function () {
 			$("#medium-editor-toolbar-1").click(function () {
-				setTimeout(()=>{
-					$("#medium-editor-toolbar-1").click(function () {
-						that.popSaveBtn()
-					})
-					$('.tooltipped').tooltip({delay: 50})
-				},300)
+
 			})
 		})
 	},
@@ -135,6 +126,14 @@ var Editable = {
 				that.popSaveBtn()
 			})
 		},300)
+		$editable.click(function () {
+			setTimeout(()=> {
+				$(".medium-editor-action").click(function () {
+					that.popSaveBtn()
+				})
+				$('.tooltipped').tooltip({delay: 50})
+			},300);
+		})
 
 	}
 }

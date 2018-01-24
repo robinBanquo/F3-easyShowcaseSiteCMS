@@ -14,14 +14,16 @@ class EditController extends Controller {
 				"vous devez vous authentifier pour accéder au options d'administration");
 			//puis on renvoie vers la page de login
 			$this->f3->reroute('/login');
-		}else{
-			$tokenExpiration = 3600; //1H
-			$token = $this->f3->get('GET')['CSRFToken']? $this->f3->get('GET')['CSRFToken'] :$this->f3->get('POST')['CSRFToken'];
-			if( $token !== $this->f3->get('SESSION.CSRFToken') ||
-				time()> ($this->f3->get('SESSION.CSRFTokenCreatedAt')+ $tokenExpiration)){
-				$this->f3->set('SESSION.error', array("token : ". $token, $this->f3->get('SESSION.CSRFToken')));
+		} else {
+			$tokenExpiration=3600; //1H
+			$token=$this->f3->get('GET')['CSRFToken']?$this->f3->get('GET')['CSRFToken']:
+				$this->f3->get('POST')['CSRFToken'];
+			if ($token!==$this->f3->get('SESSION.CSRFToken') ||
+				time()>($this->f3->get('SESSION.CSRFTokenCreatedAt')+$tokenExpiration)) {
+				$this->f3->set('SESSION.error',
+					array("token : ".$token,$this->f3->get('SESSION.CSRFToken')));
 				$this->f3->reroute('/error');
-				}
+			}
 		}
 	}
 
@@ -176,16 +178,18 @@ class EditController extends Controller {
 		$siteStructure=$this->getSiteStructure();
 		//on récupere le tableau contenu dans _POST
 		$postArray=$this->f3->get('POST');
-
+		//voir la doc du purifier html ici http://htmlpurifier.org/
+		$config=HTMLPurifier_Config::createDefault();
+		$purifier=new HTMLPurifier($config);
 		//pour chacunes des entrées
 		foreach ($postArray as $key=>$value) {
 			//on récupere les infos contenues dans les clef des input name
 			$splittedKey=explode("-",$key);
 			$id=$splittedKey[1];
 			$name=$splittedKey[2];
-
-			$config = HTMLPurifier_Config::createDefault();
-			$purifier = new HTMLPurifier($config);
+			//on corrige le défaut de medium éditeur (ou notre galere a le configurer en remplacant les balises h6 par des p
+			$value=preg_replace('`<h6`','<p',$value);
+			$value=preg_replace('`</h6>`','</p>',$value);
 			//puis on boucle sur notre structure
 			foreach ($siteStructure as $i=>$section) {
 				//si on est dans la bonne section
@@ -195,7 +199,8 @@ class EditController extends Controller {
 						if ($fieldName===
 							$name) { //todo faille de sécu sur les attributs d'images qu'est ce qu'il se passe si on marque < machin.jpg" onclick="alert('coucou') >?
 							//puis on update cette entrée
-							$siteStructure[$i]['fields'][$fieldName]['value']=$purifier->purify($value);
+							$siteStructure[$i]['fields'][$fieldName]['value']=
+								$purifier->purify($value);
 						}
 					}
 				}
@@ -331,29 +336,28 @@ class EditController extends Controller {
 		);
 		//puis on les sauvegarde dans les options de l'utilisateur
 		$siteOptions=$this->db->read('siteOptions.json');
-		$siteOptions['theme'] = $theme;
+		$siteOptions['theme']=$theme;
 		$this->db->write('siteOptions.json',$siteOptions);
 		echo json_encode(array('result'=>'success'));
-
 	}
+
 	/***************************
 	 * Methode d'edition des jeux de polices du site
 	 */
 	function editFont() {
 		//on viens récuperer les données en faisant un htmlentities dessus pour la sécu vu qu'elles seront ensuite affichées sans filtre
 		$chosenFont=$this->getSafePOST('name');
-		$fontsList= $this->getFontsList();
-		$fontToInclude = array();
-		foreach ($fontsList as $font){
-			if($font['name'] === $chosenFont){
-				$fontToInclude = $font;
+		$fontsList=$this->getFontsList();
+		$fontToInclude=array();
+		foreach ($fontsList as $font) {
+			if ($font['name']===$chosenFont) {
+				$fontToInclude=$font;
 			}
 		}
 		//puis on les sauvegarde dans les options de l'utilisateur
 		$siteOptions=$this->db->read('siteOptions.json');
-		$siteOptions['font'] = $fontToInclude;
+		$siteOptions['font']=$fontToInclude;
 		$this->db->write('siteOptions.json',$siteOptions);
 		echo json_encode(array('result'=>'success'));
-
 	}
 }
