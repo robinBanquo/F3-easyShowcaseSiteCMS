@@ -239,7 +239,7 @@ htmlToInclude += `			</div>
 		data+= '&CSRFToken='+CSRFToken
 		let that = this
 		$.ajax({
-			url: '/admin/edit/edit-theme',
+			url: 'admin/edit/edit-theme',
 			type: 'POST', // Le type de la requête HTTP, ici devenu POST
 			data: data, //
 			dataType: 'json',

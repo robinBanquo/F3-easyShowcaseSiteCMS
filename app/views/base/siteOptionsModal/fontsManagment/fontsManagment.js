@@ -122,7 +122,7 @@ FontsManagment = {
 		data+= '&CSRFToken='+CSRFToken
 		let that = this
 		$.ajax({
-			url: '/admin/edit/edit-font',
+			url: 'admin/edit/edit-font',
 			type: 'POST', // Le type de la requête HTTP, ici devenu POST
 			data: data, //
 			dataType: 'json',

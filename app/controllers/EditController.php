@@ -239,7 +239,8 @@ class EditController extends Controller {
 				} else {
 					//gestion de la sauvegarde dui fichier image dans le dossier media du site
 					$mediaName=uniqid();
-					$destination='./sites/'.$this->siteName.'/medias/'.$mediaName;
+					$destination='./sites/'.$this->siteName.'/medias/'.$mediaName.".".$extension_upload;
+					$url='sites/'.$this->siteName.'/medias/'.$mediaName.".".$extension_upload;
 					$result=move_uploaded_file($media['tmp_name'],$destination);
 					if (!$result) {
 						echo json_encode(array('errors'=>$media,
@@ -252,7 +253,7 @@ class EditController extends Controller {
 						$toPush=array(
 							'id'=>$mediaName,
 							'type'=>'img',
-							'url'=>$destination,
+							'url'=>$url,
 							'label'=>"",
 							'size'=>($width && $height)?$width."x".$height:""
 						);

@@ -9,7 +9,7 @@
     },
     "imgUrl" : {
       "type": "text",
-      "value" : "/app/views/modules/paralax/background3.jpg"
+      "value" : "app/views/modules/paralax/background3.jpg"
 
     }
   }

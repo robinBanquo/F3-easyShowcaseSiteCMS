@@ -2,7 +2,7 @@
  * Objet permettant l'affichage de la bibliotheque d'media
  * @type {{files(): *, initialFiles, recentlyAddedFiles: Array, onlyForPickUp: boolean, addButon: string, waitingSpinner: string, getHtmlItem(*): *, initAddFileEvent(): void, render(*=): void, initAddFiles(): void, addFileCallback(*=): void}}
  */
-var MediaManagment = {
+MediaManagment = {
 	//les fichier a partir desquels doit travailler l'objet pour le rendus
 	medias() {
 		return this.recentlyAddedMedias.concat(this.initialMedias)
@@ -52,13 +52,13 @@ var MediaManagment = {
 				 style="background-color: rgb(255,255,255) !important;">
 					<i class="absolute white-text" style="margin:20px 0 0 10px; font-size: small">` + media.size + `</i>
 					<img class="responsive-img" src="` + media.url + `" alt="` + media.label + `">
-					<a href="#!" id="/admin/edit/delete-media?id=` + media.id + `&CSRFToken=`+CSRFToken+`" class="children-hover btn-floating  waves-effect waves-light lightButton absolute tooltipped removeMediaFromLibrary" data-position="top"
+					<a href="#!" id="admin/edit/delete-media?id=` + media.id + `&CSRFToken=`+CSRFToken+`" class="children-hover btn-floating  waves-effect waves-light lightButton absolute tooltipped removeMediaFromLibrary" data-position="top"
 								 data-delay="350" data-tooltip="Supprimer l'image de votre bibliothèque" 
 								 style="top: 10px ; right: 10px">
 						<i class="material-icons " >clear</i>
 					</a>
 					<div class="absolute children-hover" style="bottom: 0; width: 100%; background-color: rgba(0,0,0,0.52)">
-						<form method="post" action="/admin/edit/edit-media-info" class="editMediaInfo" style="margin: 0 10px 0 10px !important;">
+						<form method="post" action="admin/edit/edit-media-info" class="editMediaInfo" style="margin: 0 10px 0 10px !important;">
 						<input type="text" name="id" value="` + media.id + `" class="displaynone">
 						<input type="text" class="displaynone" name="CSRFToken" value="`+CSRFToken+`">
 							<input name="label" type="text" `
@@ -96,7 +96,7 @@ var MediaManagment = {
 			that.initAddMedias()
 			let formData = new FormData($(this)[0]);
 			$.ajax({
-				url: "/admin/edit/add-media-to-librairie",
+				url: "admin/edit/add-media-to-librairie",
 				type: "POST",
 				data: formData,
 				async: false,
@@ -135,7 +135,7 @@ var MediaManagment = {
 		})
 		//action au click sur le bouton d'eition d'une image
 		$('.editMediaInfo').submit(function (e) {
-			var url = "/admin/edit/edit-media-info"; // the script where you handle the form input.
+			var url = "admin/edit/edit-media-info"; // the script where you handle the form input.
 			$('.tooltipped').tooltip('remove');
 			$.ajax({
 				type: "POST",

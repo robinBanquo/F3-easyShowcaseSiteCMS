@@ -2010,7 +2010,7 @@ Fat-Free also has a Javascript and CSS compressor available in the Web plug-in. 
 
 ``` html
 <link rel="stylesheet" type="text/css"
-	href="/minify/css?files=typo.css,grid.css" />
+	href="minify/css?files=typo.css,grid.css" />
 ```
 
 Do the same with your Javascript files:-

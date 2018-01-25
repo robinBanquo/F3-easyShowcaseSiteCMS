@@ -1,5 +1,14 @@
-<div class="row absolute no-margin addSectionBtn-parent" style="top: -20px; width: 100%;">
-	<a class="btn-floating waves-effect waves-light frama-orange hover-frama-purple relative tooltipped modal-trigger addSectionBtn" href="#addSectionModal"  data-position="right"
-	   data-delay="350" data-tooltip="Insérer une section ici" style=" left: 10px" id="addSection-{{@positionReference}}-{{@reference}}"><i class="material-icons">add</i></a>
-
-</div>
+<check if="{{ @positionReference === 'before' }}">
+<true>
+	<div class="row absolute no-margin addSectionBtn-parent" style="top: -20px;	 width: 100%;">
+		<a class="btn-floating waves-effect waves-light frama-orange hover-frama-purple relative tooltipped modal-trigger addSectionBtn" href="#addSectionModal"  data-position="right"
+		   data-delay="350" data-tooltip="Insérer une section ici" style=" left: 10px" id="addSection-{{@positionReference}}-{{@reference}}"><i class="material-icons">add</i></a>
+	</div>
+</true>
+<false>
+	<div class="row absolute no-margin addSectionBtn-parent" style="bottom: -20px;	 width: 100%;">
+		<a class="btn-floating waves-effect waves-light frama-orange hover-frama-purple relative tooltipped modal-trigger addSectionBtn" href="#addSectionModal"  data-position="right"
+		   data-delay="350" data-tooltip="Insérer une section ici" style=" left: 10px" id="addSection-{{@positionReference}}-{{@reference}}"><i class="material-icons">add</i></a>
+	</div>
+</false>
+</check>

@@ -1,6 +1,6 @@
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="/public/js/materialize.js"></script>
+<script src="public/js/materialize.js"></script>
 
 <script>
 
@@ -8,26 +8,27 @@
 	var CSRFToken= '{{@SESSION[CSRFToken]}}'
 </script>
 
-<script src="/public/js/init.js"></script>
-<script src="/app/views/base/nav/nav.js"></script>
-<script src="/app/views/base/footer/footer.js" ></script>
-<script src="/public/js/adminEditScripts.js"></script>
+<script src="public/js/init.js"></script>
+<script src="app/views/base/nav/nav.js"></script>
+<script src="app/views/base/footer/footer.js" ></script>
+<script src="public/js/adminEditScripts.js"></script>
 
 
 <repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
-	<script src="{{'/app/views/modules/'.@module.'/show.js'}}"></script>
+	<script src="{{'app/views/modules/'.@module.'/show.js'}}"></script>
 </repeat>
 <check if="{{ @isAdminPage }}">
-	<script src="/public/js/medium-editor.min.js"></script>
-	<script src="/public/js/Editable.js"></script>
-	<script src="/app/views/base/editBtns/editBtns.js" ></script>
-	<script src="/app/views/base/generalModuleOptions/generalModuleOptions.js" ></script>
-	<script src="/app/views/base/siteOptionsModal/mediaManagment/mediaManagment.js" ></script>
-	<script src="/app/views/base/siteOptionsModal/fontsManagment/fontsManagment.js" ></script>
-	<script src="/app/views/base/siteOptionsModal/themesManagment/themesManagment.js" ></script>
-	<script src="/app/views/base/siteOptionsModal/siteOptionsModal.js" ></script>
-	<script src="/app/views/base/uglyForm/uglyForm.js" ></script>
+	<script src="public/js/medium-editor.min.js"></script>
+	<script src="public/js/Editable.js"></script>
+	<script src="app/views/base/editBtns/editBtns.js" ></script>
+	<script src="app/views/base/generalModuleOptions/generalModuleOptions.js" ></script>
+	<script src="app/views/base/siteOptionsModal/mediaManagment/mediaManagment.js" ></script>
+	<script src="app/views/base/siteOptionsModal/fontsManagment/fontsManagment.js" ></script>
+	<script src="app/views/base/siteOptionsModal/themesManagment/themesManagment.js" ></script>
+	<script src="app/views/base/siteOptionsModal/paramsManagment/paramsManagment.js" ></script>
+	<script src="app/views/base/siteOptionsModal/siteOptionsModal.js" ></script>
+	<script src="app/views/base/uglyForm/uglyForm.js" ></script>
 	<repeat group="{{ @jsSectionArray }}" value="{{ @module }}">
-		<script src="{{'/app/views/modules/'.@module.'/edit.js'}}"></script>
+		<script src="{{'app/views/modules/'.@module.'/edit.js'}}"></script>
 	</repeat>
 </check>

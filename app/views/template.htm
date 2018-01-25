@@ -11,8 +11,14 @@
 	<section class="relative moduleSectionContainer" id="{{@section[id]}}">
 		<include if="{{ @isAdminPage }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='before'"/>
 		<include href="{{ './modules/' . @section['module'] . '/module.htm' }}" with="id={{@section[id]}},fields={{@section[fields]}}"/>
-		<include if="{{ @isAdminPage && @position === count(@siteStructure)-1 }}" href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
-	<include if="{{ @isAdminPage }}" href="./base/generalModuleOptions/generalModuleOptions.htm" with="id={{@section[id]}}" />
+		<check if="{{ @isAdminPage }}">
+			<check if="{{ @position === count(@siteStructure)-1 }}">
+				<include  href="./base/editBtns/addSection.htm" with="reference={{@section[id]}},positionReference='after'"/>
+			</check>
+
+			<include  href="./base/generalModuleOptions/generalModuleOptions.htm" with="id={{@section[id]}}" />
+		</check>
+
 	</section>
 </repeat>
 
