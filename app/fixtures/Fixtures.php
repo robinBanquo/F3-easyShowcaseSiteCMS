@@ -40,7 +40,7 @@ class Fixtures {
 			"favIcon" => "" ,
 			"siteLogo"=> "",
 			"lang" => "fr",
-			"description"=> "le nouveau site de ".$f3->get("siteName"),
+			"description"=> "le nouveau site '".$f3->get("siteName"). "'réalisé grace à FramaSite",
 			"keywords" => "site, internet, CMS, ".$f3->get("siteName")
 		];
 	}

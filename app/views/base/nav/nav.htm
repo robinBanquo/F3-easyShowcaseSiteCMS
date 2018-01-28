@@ -1,6 +1,11 @@
 <nav class="nav menu-background" id="mainNav" role="navigation">
 	<div class=" nav-wrapper container">
-		<a id="logo-container" href="#" class="brand-logo second-color title-font">{{@siteName}}</a>
+		<a id="logo-container" href="#" class="brand-logo second-color title-font">
+			<check if="{{ @siteOptions['params']['siteLogo'] }}">
+				<img class="brand-logos" src="@siteOptions['params']['siteLogo']" alt="Logo de {{ @siteOptions['params']['title']}}">
+			</check>
+			{{ @siteOptions['params']['title']}}
+		</a>
 		<ul class="right hide-on-med-and-down">
 			<repeat group="{{ @siteStructure }}" value="{{ @section }}">
 				<check if="{{ @section['inMenuAs'] }}">

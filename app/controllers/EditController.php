@@ -361,4 +361,24 @@ class EditController extends Controller {
 		$this->db->write('siteOptions.json',$siteOptions);
 		echo json_encode(array('result'=>'success'));
 	}
+	/***************************
+	 * Methode d'edition des jeux de polices du site
+	 */
+	function editParams() {
+		//on viens récuperer les données en faisant un htmlentities dessus pour la sécu vu qu'elles seront ensuite affichées sans filtre
+		$siteParams = [];
+		$siteParams["title"]=$this->getSafePOST('title');
+		$siteParams["titleSize"]=$this->getSafePOST('titleSize');
+		$siteParams["favIcon"]=$this->getSafePOST('favIcon');
+		$siteParams["siteLogo"]=$this->getSafePOST('siteLogo');
+		$siteParams["lang"]=$this->getSafePOST('lang');
+		$siteParams["description"]=$this->getSafePOST('description');
+		$siteParams["keywords"]=$this->getSafePOST('keywords');
+
+		//puis on les sauvegarde dans les options de l'utilisateur
+		$siteOptions=$this->db->read('siteOptions.json');
+		$siteOptions['params']=$siteParams;
+		$this->db->write('siteOptions.json',$siteOptions);
+		echo json_encode(array('result'=>'success', 'params'=>$siteParams));
+	}
 }

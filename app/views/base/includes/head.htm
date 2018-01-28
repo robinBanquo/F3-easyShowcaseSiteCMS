@@ -4,9 +4,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<title>{{ @siteName}}</title>
-	<meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
-
+	<title>{{ @siteOptions['params']['title']}}</title>
+	<meta property="og:image" content="{{ @siteOptions['params']['favIcon']}}" />
+	<meta name="description" content="{{ @siteOptions['params']['description']}}" />
+	<meta name="keywords" content="{{ @siteOptions['params']['keywords']}}" />
+	<link rel="icon" type="image/png" href="{{ @siteOptions['params']['favIcon']}}" />
 	<!-- CSS  -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="public/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>

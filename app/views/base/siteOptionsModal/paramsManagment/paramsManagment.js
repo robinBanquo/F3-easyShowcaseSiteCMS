@@ -115,34 +115,36 @@ ParamsManagment = {
 			e.preventDefault()
 		})
 		$('#submitParamsBtn').click(function () {
-			let data= that.getFormValues()
-				$.ajax({
-					url: 'admin/edit/edit-params',
-					type: 'POST', // Le type de la requête HTTP, ici devenu POST
-					data: data, //
-					dataType: 'json',
-					success(msg) {
-						console.log()
-						if (msg.result === "success") {//si ca marche
-							that.params = theme
-							//on applique le theme
-							that.applyTheme(that.userTheme)
-							//et on re-rends le template
-							that.render()
-							$('.tooltipped').tooltip({delay: 50});
+			let data = that.getFormValues()
+			console.log(data);
+			$.ajax({
+				url: 'admin/edit/edit-params',
+				type: 'POST', // Le type de la requête HTTP, ici devenu POST
+				data: data, //
+				dataType: 'json',
+				success(msg) {
+					console.log()
+					if (msg.result === "success") {//si ca marche
+						that.params = msg.params
+						console.log(that.params)
+						//on applique le theme
 
-						} else {
-							console.log(msg)
-							Materialize.toast("Une erreur s'est produite", 4000, 'red')
-							$('.tooltipped').tooltip({delay: 50});
-						}
-					},
-					error: function () {
-						Materialize.toast("Une erreur s'est produite", 4000, 'red')
+						//et on re-rends le template
+						that.render()
 						$('.tooltipped').tooltip({delay: 50});
 
+					} else {
+						console.log(msg)
+						Materialize.toast("Une erreur s'est produite", 4000, 'red')
+						$('.tooltipped').tooltip({delay: 50});
 					}
-				})
+				},
+				error: function () {
+					Materialize.toast("Une erreur s'est produite", 4000, 'red')
+					$('.tooltipped').tooltip({delay: 50});
+
+				}
+			})
 		})
 
 	},
@@ -158,15 +160,21 @@ ParamsManagment = {
 			description: $('#siteParamsForm #description').val(),
 
 		}
-		for(key in submittedValues){
-			data+= "&"+key+"="+submittedValues[key];
+		for (key in submittedValues) {
+			data += "&" + key + "=" + submittedValues[key];
 		}
-	let keywords = ""
-			$('#siteParamsForm #keywords').material_chip('data').forEach((tag) => {
+		let keywords = ""
+		let tags = $('#siteParamsForm #keywords').material_chip('data')
+		tags.forEach((tag,i) => {
+			if(i !== tags.length -1 ){
 				keywords += tag.tag + ", "
-			});
-		data+= "&keywords="+keywords;
-		console.log(data)
+			}else{
+				keywords += tag.tag
+			}
+
+		});
+		data += "&keywords=" + keywords;
+
 		return data;
 	}
 
