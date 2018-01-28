@@ -223,7 +223,7 @@ MediaManagment = {
 		htmlToInsert += `<section class="blockList" id="addNewMediaToListContainer" >` +
 			this.addButon + `</section>
 						<form id="addMediaForm" action="#!" class="displaynone">
-						<input type="text" class="displaynone" name="CSRFToken" value="`+CSRFToken+`">
+							<input type="text" class="displaynone" name="CSRFToken" value="`+CSRFToken+`">
 							<input type="file" name="media">
 						</form>`
 		//ajout de toutes le images

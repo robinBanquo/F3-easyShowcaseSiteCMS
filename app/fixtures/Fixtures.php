@@ -37,8 +37,8 @@ class Fixtures {
 		return [
 			"title" => $f3->get("siteName"),
 			"titleSize" => "medium",
-			"favIcon" => false ,
-			"siteLogo"=> false,
+			"favIcon" => "" ,
+			"siteLogo"=> "",
 			"lang" => "fr",
 			"description"=> "le nouveau site de ".$f3->get("siteName"),
 			"keywords" => "site, internet, CMS, ".$f3->get("siteName")
